@@ -4,6 +4,7 @@ body {
   margin-right: 15%;
   margin-top: 50px;
   margin-bottom: 50px;
+  word-wrap: break-word;
 }
 
 h1 {
@@ -64,6 +65,8 @@ input[type=submit] {
   color: white;
   font-size: 14px;
 }
+
+
 /* Tab Styles */
 
 /* Style the tab */
@@ -110,6 +113,7 @@ input[type=submit] {
   from {opacity: 0;}
   to {opacity: 1;}
 }
+
 
 /* Footer Styles */
 
