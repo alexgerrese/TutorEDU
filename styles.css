@@ -8,13 +8,14 @@ body {
 }
 
 h1 {
-    /* font-family: fantasy; */
+    font-family: fantasy;
     text-align: center;
     color: navy;
     text-shadow: 5px 5px 10px #999;
 }
 
 footer {
+    font-family: fantasy;
     text-align: center;
     color: navy;
     text-shadow: 5px 5px 10px #999;
