@@ -6,6 +6,8 @@
 
     <link rel="stylesheet" type="text/css" href="styles.css">
 
+    <script src="main.js" type="text/javascript"></script>
+
     <title>TutorEDU</title>
   </head>
 
@@ -42,6 +44,48 @@
     </div>
 
     <div class="roster">
+      <h3>Learn about our team!</h3>
+      <div class="tab">
+        <button class="tablinks" onclick="showProfile(event, 'Alex')" id="defaultO">Alex G.</button>
+        <button class="tablinks" onclick="showProfile(event, 'Noah')">Noah K.</button>
+        <button class="tablinks" onclick="showProfile(event, 'Jaidha')">Jaidha R.</button>
+        <button class="tablinks" onclick="showProfile(event, 'Jack')">Jack S.</button>
+      </div>
+
+      <div id="Alex" class="tabcontent">
+        <h4>Alex Gerrese</h3>
+        <p>Lead, Designer, Developer</p>
+        <p>From Paris, France</p>
+        <p>I memorized 100 digits of pi when I was bored and can still recite them.</p>
+      </div>
+
+      <div id="Noah" class="tabcontent">
+        <h4>Noah Karpel</h3>
+        <p>TBD</p>
+        <p>TBD</p>
+        <p>TBD</p>
+      </div>
+
+      <div id="Jaidha" class="tabcontent">
+        <h4>Jaidha Rosenblatt</h3>
+        <p>TBD</p>
+        <p>TBD</p>
+        <p>TBD</p>
+      </div>
+
+      <div id="Jack" class="tabcontent">
+        <h4>Jack Schiffman</h3>
+        <p>TBD</p>
+        <p>TBD</p>
+        <p>TBD</p>
+      </div>
+
+      <script>
+        document.getElementById("defaultO").click();
+      </script>
+    </div>
+
+    <!-- <div class="roster">
       <h3>Learn about our team!</h3>
       <table style="width:100%">
         <tr>
@@ -80,7 +124,7 @@
           <td>TBD</td>
         </tr>
       </table>
-    </div>
+    </div> -->
 
     <div class="form">
       <h3>Join our waiting list!</h3>
