@@ -10,7 +10,8 @@ body {
 h1 {
     /* font-family: fantasy; */
     text-align: center;
-    /* text-shadow: 5px 5px 10px #999; */
+    color: navy;
+    text-shadow: 5px 5px 10px #999;
 }
 
 img {
