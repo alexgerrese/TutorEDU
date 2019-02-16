@@ -135,13 +135,20 @@
         <input type="text" name="lastname"><br><br>
       </form>
       <button id="submitButton" onclick="openDialog()">Submit</button>
+      <dialog id="formDialog">
+        <h3>Welcome to TutorEDU!</h3>
+        <p>Thanks for joining our waiting list. We'll be in touch shortly.</p>
+        <button value="cancel" onclick="closeDialog()">Close</button>
+      </dialog>
     </div>
 
-    <dialog id="formDialog">
-      <h3>Welcome to TutorEDU!</h3>
-      <p>Thanks for joining our waiting list. We'll be in touch shortly.</p>
-      <button value="cancel" onclick="closeDialog()">Close</button>
-    </dialog>
+    <div class="copyright">
+      <details>
+        <summary>Copyright © 2019</summary>
+        <p> TutorEDU Corp. All Rights Reserved.</p>
+        <p>All content and graphics on this web site are the property of the company TutorEDU Corp.</p>
+      </details>
+    </div>
 
   </body>
 </html>

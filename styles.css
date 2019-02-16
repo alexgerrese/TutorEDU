@@ -98,3 +98,12 @@ input[type=submit] {
   border-top: none;
   border-radius: 0px 0px 4px 4px;
 }
+
+/* Footer Styles */
+
+.copyright {
+  margin: 20px;
+  align-items: center;
+  text-align: center;
+  font-size: 12px;
+}
