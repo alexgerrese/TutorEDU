@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+  <head>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" type="text/css" href="styles.css">
+
+    <script src="main.js" type="text/javascript"></script>
+
+    <title>TutorEDU</title>
+  </head>
+
+  <body>
+
+    <div class="header">
+      <h1>TutorEDU</h1>
+    </div>
+
+    <div class="description">
+      <h3>Description</h3>
+      <p>TutorEDU is a website that uses .edu addresses to pair users with a tutor for assistance in a subject. Unlike services like Chegg or Coursehero, tutoring is personal and localized since both tutors and tutees are students at the same institution. Similar to services like Uber or Lyft, users both “work for” and derive the benefits of the application, serving as both the tutor and the learner.</p>
+    </div>
+
+    <div class="sprint">
+      <h3>Sprint Planning</h3>
+      <ol>
+        <li>Sprint 1</li>
+        <li>Sprint 2</li>
+        <li>Sprint 3</li>
+        <li>Sprint 4</li>
+        <li>Sprint 5</li>
+      </ol>
+      <img src="" alt="TBD">
+    </div>
+
+    <div class="related">
+      <h3>Related Websites</h3>
+      <ul>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+      </ul>
+    </div>
+
+    <div class="roster">
+      <h3>Learn about our team!</h3>
+      <div class="tab">
+        <button class="tablinks" onclick="showProfile(event, 'Alex')" id="defaultO">Alex G.</button>
+        <button class="tablinks" onclick="showProfile(event, 'Noah')">Noah K.</button>
+        <button class="tablinks" onclick="showProfile(event, 'Jaidha')">Jaidha R.</button>
+        <button class="tablinks" onclick="showProfile(event, 'Jack')">Jack S.</button>
+      </div>
+
+      <div id="Alex" class="tabcontent">
+        <h4>Alex Gerrese</h3>
+        <p>Lead, Designer, Developer</p>
+        <p>From Paris, France</p>
+        <p>I memorized 100 digits of pi when I was bored and can still recite them.</p>
+      </div>
+
+      <div id="Noah" class="tabcontent">
+        <h4>Noah Karpel</h3>
+        <p>Designer, Developer</p>
+        <p>From Philadelphia, Pennsylvania</p>
+        <p>I am skeptical of Gerrese's ability to recite 100 digits of pi</p>
+      </div>
+
+      <div id="Jaidha" class="tabcontent">
+        <h4>Jaidha Rosenblatt</h3>
+        <p>TBD</p>
+        <p>TBD</p>
+        <p>TBD</p>
+      </div>
+
+      <div id="Jack" class="tabcontent">
+        <h4>Jack Schiffman</h3>
+        <p>TBD</p>
+        <p>TBD</p>
+        <p>TBD</p>
+      </div>
+
+      <script>
+        document.getElementById("defaultO").click();
+      </script>
+    </div>
+
+    <!-- <div class="roster">
+      <h3>Learn about our team!</h3>
+      <table style="width:100%">
+        <tr>
+          <th>Firstname</th>
+          <th>Lastname</th>
+          <th>Role</th>
+          <th>Hometown</th>
+          <th>Fun fact</th>
+        </tr>
+        <tr>
+          <td>Alexander</td>
+          <td>Gerrese</td>
+          <td>Lead, Designer, Developer</td>
+          <td>Paris, France</td>
+          <td>I memorized 100 digits of pi when I was bored and can still recite them.</td>
+        </tr>
+        <tr>
+          <td>Noah</td>
+          <td>Karpel</td>
+          <td>TBD</td>
+          <td>TBD</td>
+          <td>TBD</td>
+        </tr>
+        <tr>
+          <td>Jaidha</td>
+          <td>Rosenblatt</td>
+          <td>TBD</td>
+          <td>TBD</td>
+          <td>TBD</td>
+        </tr>
+        <tr>
+          <td>Jack</td>
+          <td>Schiffman</td>
+          <td>TBD</td>
+          <td>TBD</td>
+          <td>TBD</td>
+        </tr>
+      </table>
+    </div> -->
+
+    <div class="form">
+      <h3>Join our waiting list!</h3>
+      <form>
+        Name:<br>
+        <input type="text" name="firstname"><br>
+        Email address:<br>
+        <input type="text" name="lastname"><br><br>
+      </form>
+      <button id="submitButton" onclick="openDialog()">Submit</button>
+      <dialog id="formDialog">
+        <h3>Welcome to TutorEDU!</h3>
+        <p>Thanks for joining our waiting list. We'll be in touch shortly.</p>
+        <button value="cancel" onclick="closeDialog()">Close</button>
+      </dialog>
+    </div>
+
+    <div class="copyright">
+      <details>
+        <summary>Copyright © 2019</summary>
+        <p> TutorEDU Corp. All Rights Reserved.</p>
+        <p>All content and graphics on this web site are the property of the company TutorEDU Corp.</p>
+      </details>
+    </div>
+
+  </body>
+</html>
