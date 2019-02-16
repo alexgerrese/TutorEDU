@@ -133,9 +133,15 @@
         <input type="text" name="firstname"><br>
         Email address:<br>
         <input type="text" name="lastname"><br><br>
-        <input type="submit" value="Submit">
       </form>
+      <button id="submitButton" onclick="openDialog()">Submit</button>
     </div>
+
+    <dialog id="formDialog">
+      <h3>Welcome to TutorEDU!</h3>
+      <p>Thanks for joining our waiting list. We'll be in touch shortly.</p>
+      <button value="cancel" onclick="closeDialog()">Close</button>
+    </dialog>
 
   </body>
 </html>

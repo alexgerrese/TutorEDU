@@ -19,3 +19,19 @@ function showProfile(evt, name) {
   document.getElementById(name).style.display = "block";
   evt.currentTarget.className += " active";
 }
+
+function openDialog() {
+
+  var formDialog = document.getElementById('formDialog');
+
+  formDialog.showModal();
+
+}
+
+function closeDialog() {
+
+  var formDialog = document.getElementById('formDialog');
+
+  formDialog.close();
+
+}

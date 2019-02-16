@@ -1,11 +1,7 @@
-header {
-
-}
-
 body {
   font-family: Avenir;
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-left: 15%;
+  margin-right: 15%;
   margin-top: 50px;
   margin-bottom: 50px;
 }
@@ -51,6 +47,17 @@ input[type=submit] {
   font-size: 14px;
 }
 
+.form button {
+  width: 50%;
+  border: 1px solid lightgrey;
+  border-radius: 4px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  background-color: blue;
+  color: white;
+  font-size: 14px;
+}
 /* Tab Styles */
 
 /* Style the tab */
