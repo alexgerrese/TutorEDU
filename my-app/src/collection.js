@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Movie from './movie';
-
+// testing for git
 class Collection extends Component {
   constructor() {
     super();
