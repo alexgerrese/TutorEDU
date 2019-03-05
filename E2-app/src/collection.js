@@ -3,14 +3,17 @@ import Movie from './movie';
 import MovieDetail from './MovieDetail';
 // testing for git
 class Collection extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      movies: [],
-      clicked: false,
+      isShow: true,
+      movies: []
     };
   }
 
+  toggleShow = () => {
+    this.setState(state => ({isShow: !state.isShow}));
+  }
 
   async componentDidMount() {
     const response = await fetch("https://api.themoviedb.org/3/movie/top_rated?api_key=e83c646d73f735bd6ce57c5238782f4c&language=en-US&page=1");
@@ -19,7 +22,17 @@ class Collection extends Component {
   }
 
   render() {
-    if(this.state.clicked == false) {
+    if(Button.onClick == true) {
+      return (
+        <div className="collection">
+          {this.state.movies.map(movie => (
+            <MovieDetail description={ movie.title + " " + movie.date + " " + movie.description } />
+          ))}
+            <Button onClick={this.toggleShow} />
+          </div>
+      )
+    }
+    else {
       return  (
         <div className="collection">
           {this.state.movies.map(movie => (
@@ -30,5 +43,11 @@ class Collection extends Component {
       }
     }
   }
+
+  const Button = ({ onClick }) => (
+    <button onClick ={onClick} type="button">
+    toggleShow
+    </button>
+    )
 
 export default Collection;
