@@ -7,7 +7,7 @@ import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render((
   <div>
-    <h1>World's Greatest Movies</h1>
+    <h1>TutorEDU</h1>
     <Collection />
   </div>
 ), document.getElementById('root'));
