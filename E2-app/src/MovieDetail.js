@@ -6,7 +6,7 @@ class MovieDetail extends Component {
     return (
       <div className="movie-description">
         <h1>{ this.props.name }</h1>
-        <h2>{ this.props.description } </h2>
+        <h2>{ this.props.description }</h2>
         <h3>{ this.props.date }</h3>
       </div>
     )
