@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './styles.css';
 import styled from 'styled-components';
+import TutorProfile from './TutorProfile';
 
 const Button = styled.button`
   height: 40px;
@@ -38,6 +39,9 @@ class TutorCard extends Component {
         <h4 className="tutor-availabilities">AVAILABILITIES</h4>
         <p>{this.props.availabilities}</p>
         <Button>View Profile</Button>
+
+
+
       </div>
     )
   }
