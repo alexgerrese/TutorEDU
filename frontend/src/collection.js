@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TutorCard from './TutorCard';
+import TutorProfile from './TutorProfile';
 import NavBar from './NavBar';
 
 
