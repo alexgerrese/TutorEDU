@@ -5,18 +5,21 @@ import NavBar from './NavBar';
 
 const tutors = [{
   name: "Justin Robinson",
+  profpicURL: "https://randomuser.me/api/portraits/men/4.jpg",
   bio: "I’m a senior studying Computer Science and pursuing a PhD in machine learning. I love helping others learn!",
   availabilities: "Mon-Fri 10am-1:30pm, Sat 4pm-6pm",
   courses: ["CS290","I&E342"]
 },
 {
-  name: "Alex Gerrese",
+  name: "Farid Salim",
+  profpicURL: "https://randomuser.me/api/portraits/men/7.jpg",
   bio: "I’m a senior studying Computer Science and pursuing a PhD in machine learning. I love helping others learn!",
   availabilities: "Mon-Fri 10am-1:30pm, Sat 4pm-6pm",
   courses: ["CS290","I&E342"]
 },
 {
-  name: "Bro Gerrese",
+  name: "Alison Bree",
+  profpicURL: "https://randomuser.me/api/portraits/women/8.jpg",
   bio: "I’m a senior studying Computer Science and pursuing a PhD in machine learning. I love helping others learn!",
   availabilities: "Mon-Fri 10am-1:30pm, Sat 4pm-6pm",
   courses: ["CS290","I&E342"]
@@ -37,6 +40,7 @@ class Collection extends Component {
           {tutors.map((tutor,k) => (
             <TutorCard  key={k}
                         name={tutor.name}
+                        profpicURL={tutor.profpicURL}
                         bio={tutor.bio}
                         availabilities={tutor.availabilities}/>
           ))}

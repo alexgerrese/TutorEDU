@@ -29,7 +29,7 @@ class TutorCard extends Component {
   render() {
     return (
       <div className="tutor-card">
-        <img  src={ "https://randomuser.me/api/portraits/med/men/4.jpg" }
+        <img  src={ this.props.profpicURL }
               alt={ "TUTOR NAME" }
               className="tutor-profpic"
               onClick={ this.clicked }/>
