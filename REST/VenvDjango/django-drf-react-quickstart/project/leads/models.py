@@ -1,8 +1,10 @@
 from django.db import models
+from .validators import validate_school_email
 
 class Lead(models.Model):
     name = models.CharField(max_length=100)
-    email = models.EmailField()
+    email = models.EmailField(null=True, validators= [validate_school_email])
+
     FRESHMAN = 'FR'
     SOPHOMORE = 'SO'
     JUNIOR = 'JR'
