@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './styles.css';
 import styled from 'styled-components';
 import TutorProfile from './TutorProfile';
+import {withRouter} from "react-router-dom";
 
 const Button = styled.button`
   height: 40px;
@@ -23,28 +24,25 @@ const Button = styled.button`
 
 class TutorCard extends Component {
 
-  clicked = () => {
-    this.props.onPress(this.props);
+  handleClick = () => {
+    this.props.history.push("/tutorProfile");
   }
 
   render() {
     return (
       <div className="tutor-card">
-        <img  src={ "https://randomuser.me/api/portraits/med/men/4.jpg" }
+        <img  src={ this.props.profpicURL }
               alt={ "TUTOR NAME" }
-              className="tutor-profpic"
-              onClick={ this.clicked }/>
+              className="tutor-profpic" />
         <h3 className="tutor-name">{this.props.name}</h3>
         <p>{this.props.bio}</p>
         <h4 className="tutor-availabilities">AVAILABILITIES</h4>
         <p>{this.props.availabilities}</p>
-        <Button>View Profile</Button>
-
-
+        <Button onClick={this.handleClick}>View Profile</Button>
 
       </div>
     )
   }
 }
 
-export default TutorCard;
+export default withRouter(TutorCard);

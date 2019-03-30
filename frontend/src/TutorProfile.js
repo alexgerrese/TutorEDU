@@ -12,11 +12,19 @@ const Button = styled.button`
   color: #1C3A9F;
   letter-spacing: 0;
   text-align: center;
+  justifyContent: center;
+  alignItems: center;
 
   :hover {
     color: white;
     border: 0px;
     background-color: #1C3A9F;
+  }
+
+  :image {
+    flex: 1,
+    aspectRatio: 1.5,
+    resizeMode: contain,
   }
 `;
 
@@ -37,16 +45,16 @@ class TutorProfile extends Component {
         <h2 tutorRate="tutor-rate">{this.props.rate}</h2>
         <h1 className="tutor-name">{this.props.name}</h1>
         <p>{this.props.bio}</p>
-        <h3 className="tutor-rating">RATING</h3>
+        <h4 className="tutor-rating">RATING</h4>
         <p>{this.props.rating}</p>
-        <h3 className="tutor-classes">CLASSES</h3>
+        <h4 className="tutor-classes">CLASSES</h4>
         <p>{this.props.classes}</p>
-        <h3 className="tutor-availabilities">AVAILABILITIES</h3>
+        <h4 className="tutor-availabilities">AVAILABILITIES</h4>
         <p>{this.props.availabilities}</p>
-        <h3 className="tutor-reportCard">{this.props.reportCard}</h3>
+        <h4 className="tutor-reportCard">{this.props.reportCard}</h4>
         <p>{this.props.reportCard}</p>
 
-        <h1 className="tutor-appointment">SCHEDULE AN APPOINTMENT</h1>
+        <h2 className="tutor-appointment">SCHEDULE AN APPOINTMENT</h2>
         <p>Select a course</p>
         <p>Enter your availabilities</p>
         <p>Briefly describe the kind of help you need</p>
