@@ -15,7 +15,7 @@ class Lead(AbstractBaseUser, PermissionsMixin):
     date_joined = models.DateTimeField(default=timezone.now)
     name = models.CharField(max_length=100)
 #    email = models.EmailField(null=True, validators= [validate_school_email])
-    
+
     FRESHMAN = 'FR'
     SOPHOMORE = 'SO'
     JUNIOR = 'JR'
