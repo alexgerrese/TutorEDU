@@ -4,5 +4,5 @@ from django.urls import include, path
 from . import views
 
 urlpatterns = [
-    path('', views.UserListView.as_view()),
+    path('api/users/', views.UserListView.as_view()),
 ]
