@@ -35,8 +35,8 @@ class TutorProfile extends Component {
       <div className="tutor">
         <div className="tutor-TutorProfile">
           <div className="tutor-topHeader">
-            <img  src={ "https://randomuser.me/api/portraits/med/men/4.jpg" }
-                  alt={ "TUTOR NAME" }
+            <img  src={ this.props.profpicURL }
+                  alt={ this.props.name }
                   className="tutor-profpic"/>
             <h3 className="tutor-schoolYearAndRate">{this.props.school} CLASS OF {this.props.year} • {this.props.rate}</h3>
             <h1 className="tutor-name">{this.props.name}</h1>
@@ -47,24 +47,29 @@ class TutorProfile extends Component {
             <p>{this.props.rating}</p>
           </div>
           <div className="tutor-classes">
-            <h4>CLASSES</h4>
+            <h4 className="tutor-classes">CLASSES</h4>
             <p>{this.props.classes}</p>
           </div>
-          <div className="tutor-availabilities">
-            <h4>AVAILABILITIES</h4>
+          <div className="tutor-availability">
+            <h4 className="tutor-availability">AVAILABILITIES</h4>
             <p>{this.props.availabilities}</p>
           </div>
           <div className="tutor-reportCard">
-            <h4>{this.props.reportCard}</h4>
+            <h4 className="tutor-reportCard">REPORT CARD</h4>
             <p>{this.props.reportCard}</p>
           </div>
         </div>
         <div className="tutor-appointment">
-          <h2>SCHEDULE AN APPOINTMENT</h2>
+          <p className="tutor-appointment-main">Schedule an appointment</p>
           <p>Select a course</p>
+
+
           <p>Enter your availabilities</p>
+
+
           <p>Briefly describe the kind of help you need</p>
-          <p>{this.props.availabilities}</p>
+
+
           <Button>Submit Request</Button>
           <p>{this.props.name} will get back to you within 24 hours.</p>
         </div>
