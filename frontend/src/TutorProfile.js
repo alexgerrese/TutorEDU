@@ -30,37 +30,44 @@ const Button = styled.button`
 
 class TutorProfile extends Component {
 
-  clicked = () => {
-    this.props.onPress(this.props);
-  }
-
   render() {
     return (
-      <div className="tutor-TutorProfile">
-        <img  src={ "https://randomuser.me/api/portraits/med/men/4.jpg" }
-              alt={ "TUTOR NAME" }
-              className="tutor-profpic"
-              onClick={ this.clicked }/>
-        <h2 tutorYear="tutor-schoolYear">{this.props.school} {this.props.year}</h2>
-        <h2 tutorRate="tutor-rate">{this.props.rate}</h2>
-        <h1 className="tutor-name">{this.props.name}</h1>
-        <p>{this.props.bio}</p>
-        <h4 className="tutor-rating">RATING</h4>
-        <p>{this.props.rating}</p>
-        <h4 className="tutor-classes">CLASSES</h4>
-        <p>{this.props.classes}</p>
-        <h4 className="tutor-availabilities">AVAILABILITIES</h4>
-        <p>{this.props.availabilities}</p>
-        <h4 className="tutor-reportCard">{this.props.reportCard}</h4>
-        <p>{this.props.reportCard}</p>
-
-        <h2 className="tutor-appointment">SCHEDULE AN APPOINTMENT</h2>
-        <p>Select a course</p>
-        <p>Enter your availabilities</p>
-        <p>Briefly describe the kind of help you need</p>
-        <p>{this.props.availabilities}</p>
-        <Button>Submit Request</Button>
-        <p>{this.props.name} will get back to you within 24 hours.</p>
+      <div className="tutor">
+        <div className="tutor-TutorProfile">
+          <div className="tutor-topHeader">
+            <img  src={ "https://randomuser.me/api/portraits/med/men/4.jpg" }
+                  alt={ "TUTOR NAME" }
+                  className="tutor-profpic"/>
+            <h3 className="tutor-schoolYearAndRate">{this.props.school} CLASS OF {this.props.year} • {this.props.rate}</h3>
+            <h1 className="tutor-name">{this.props.name}</h1>
+            <p className="tutor-description">{this.props.bio}</p>
+          </div>
+          <div className="tutor-rating">
+            <h4 className="tutor-rating">RATING</h4>
+            <p>{this.props.rating}</p>
+          </div>
+          <div className="tutor-classes">
+            <h4>CLASSES</h4>
+            <p>{this.props.classes}</p>
+          </div>
+          <div className="tutor-availabilities">
+            <h4>AVAILABILITIES</h4>
+            <p>{this.props.availabilities}</p>
+          </div>
+          <div className="tutor-reportCard">
+            <h4>{this.props.reportCard}</h4>
+            <p>{this.props.reportCard}</p>
+          </div>
+        </div>
+        <div className="tutor-appointment">
+          <h2>SCHEDULE AN APPOINTMENT</h2>
+          <p>Select a course</p>
+          <p>Enter your availabilities</p>
+          <p>Briefly describe the kind of help you need</p>
+          <p>{this.props.availabilities}</p>
+          <Button>Submit Request</Button>
+          <p>{this.props.name} will get back to you within 24 hours.</p>
+        </div>
       </div>
     )
   }

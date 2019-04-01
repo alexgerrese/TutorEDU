@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import NavBar from './NavBar';
 import Collection from './collection';
 import TutorProfile from './TutorProfile';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
@@ -8,12 +9,17 @@ import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const routing = (
-  <Router>
-    <div>
-      <Route exact path="/" component={Collection} />
-      <Route path="/tutorProfile" component={TutorProfile} />
+  <div>
+    <div className="navbar">
+      <NavBar/>
     </div>
-  </Router>
+    <Router>
+      <div>
+        <Route exact path="/" component={Collection} />
+        <Route path="/tutorProfile" component={TutorProfile} />
+      </div>
+    </Router>
+  </div>
 )
 
 

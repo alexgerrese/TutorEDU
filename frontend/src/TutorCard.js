@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './styles.css';
 import styled from 'styled-components';
 import TutorProfile from './TutorProfile';
-import {withRouter} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Button = styled.button`
   height: 40px;
@@ -24,6 +24,11 @@ const Button = styled.button`
 
 class TutorCard extends Component {
 
+  // componentDidMount () {
+  //   const { handle } = this.props.match.params
+  //   const { fromNotifications } = this.props.location.state
+  // }
+
   handleClick = () => {
     this.props.history.push("/tutorProfile");
   }
@@ -38,11 +43,16 @@ class TutorCard extends Component {
         <p>{this.props.bio}</p>
         <h4 className="tutor-availabilities">AVAILABILITIES</h4>
         <p>{this.props.availabilities}</p>
-        <Button onClick={this.handleClick}>View Profile</Button>
-
+        <Link to={{ pathname: '/tutorProfile',
+                    state: {
+                      userID: true
+                    }
+                  }}>
+          <Button>View Profile</Button>
+        </Link>
       </div>
     )
   }
 }
 
-export default withRouter(TutorCard);
+export default TutorCard;

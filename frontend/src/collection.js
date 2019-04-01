@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import TutorCard from './TutorCard';
 import TutorProfile from './TutorProfile';
 import NavBar from './NavBar';
-
+import { Link } from 'react-router-dom';
+import axios from "axios";
 
 const tutors = [{
   name: "Justin Robinson",
@@ -29,15 +30,29 @@ const tutors = [{
 class Collection extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      users: []
+    };
+  }
+
+  componentDidMount() {
+    axios
+      .get("/api/users/")
+      .then(res => this.setState({ users: res.data }))
+      .catch(err => console.log(err));
   }
 
   render() {
     return  (
       <div className="app">
-        <div className="navbar">
-          <NavBar/>
-        </div>
         <div className="collection">
+            {this.state.users.map((user,k) => (
+              <TutorCard  key={k}
+                          name={user.username}
+                          profpicURL={""}
+                          bio={"hello"}
+                          availabilities={"hello"}/>
+            ))}
           {tutors.map((tutor,k) => (
             <TutorCard  key={k}
                         name={tutor.name}
