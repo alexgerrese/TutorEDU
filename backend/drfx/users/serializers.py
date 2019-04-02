@@ -10,3 +10,13 @@ class UserSerializer(serializers.ModelSerializer):
         'password', 'university','bio', 'client_rating',
         'is_tutor', 'tutor_rating','hourly_rate','availabilities'
         )
+
+class SubjectSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Subject
+        fields = '__all__'
+
+class AppointmentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Appointment
+        fields = '__all__'
