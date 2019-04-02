@@ -2,7 +2,7 @@
 from django.contrib.auth.models import AbstractUser
 from .validators import validate_school_email
 from django.db import models
-import datetime
+# import datetime
 
 class CustomUser(AbstractUser):
     name = models.CharField(default='blank', blank=True, max_length=40)
@@ -14,6 +14,9 @@ class CustomUser(AbstractUser):
     tutor_rating = models.IntegerField(default='5', blank=True)
     hourly_rate = models.FloatField(null=True, blank=True, default=None)
     availabilities = models.CharField(default='blank', blank=True, max_length=2000)
+    
+    def __str__(self):
+        return self.email
 
 class Subject(models.Model):
     id = models.IntegerField(default='5', blank=True, primary_key=True)
@@ -30,6 +33,3 @@ class Appointment(models.Model):
     location = models.CharField(default='blank', blank=True, max_length=40)
     status = models.CharField(default='blank', blank=True, max_length=20)
     rating = models.IntegerField(default='5', blank=True)
-
-    def __str__(self):
-        return self.email
