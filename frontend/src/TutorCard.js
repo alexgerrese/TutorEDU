@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './styles.css';
 import styled from 'styled-components';
 import TutorProfile from './TutorProfile';
-import { Link } from "react-router-dom";
+import { Link, BrowserRouter as Router, Route } from "react-router-dom";
 
 const Button = styled.button`
   height: 40px;
@@ -23,34 +23,20 @@ const Button = styled.button`
 `;
 
 class TutorCard extends Component {
-
-  // componentDidMount () {
-  //   const { handle } = this.props.match.params
-  //   const { fromNotifications } = this.props.location.state
-  // }
-
-  handleClick = () => {
-    this.props.history.push("/tutorProfile");
-  }
-
   render() {
     return (
-      <div className="tutor-card">
-        <img  src={ this.props.profpicURL }
-              alt={ "TUTOR NAME" }
-              className="tutor-profpic" />
-        <h3 className="tutor-name">{this.props.name}</h3>
-        <p>{this.props.bio}</p>
-        <h4 className="tutor-availabilities">AVAILABILITIES</h4>
-        <p>{this.props.availabilities}</p>
-        <Link to={{ pathname: '/tutorProfile',
-                    state: {
-                      userID: true
-                    }
-                  }}>
-          <Button>View Profile</Button>
-        </Link>
-      </div>
+        <div className="tutor-card">
+          <img  src={ this.props.user.profpicURL }
+                alt={ "TUTOR NAME" }
+                className="tutor-profpic" />
+          <h3 className="tutor-name">{this.props.user.name}</h3>
+          <p>{this.props.user.bio}</p>
+          <h4 className="tutor-availabilities">AVAILABILITIES</h4>
+          <p>{this.props.user.availabilities}</p>
+            <Link to={{ pathname: "/tutors/" + this.props.user.userID }}>
+              <Button>View Profile</Button>
+            </Link>
+        </div>
     )
   }
 }

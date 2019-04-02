@@ -16,7 +16,7 @@ const routing = (
     <Router>
       <div>
         <Route exact path="/" component={Collection} />
-        <Route path="/tutorProfile" component={TutorProfile} />
+        <Route path="/tutors/:userID" component={TutorProfile} />
       </div>
     </Router>
   </div>
