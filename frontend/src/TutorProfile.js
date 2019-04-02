@@ -36,7 +36,8 @@ class TutorProfile extends Component {
     this.state = {
       user: {
         id: -1,
-        name: "",
+        firstname: "",
+        lastname: "",
         profpicURL: "https://randomuser.me/api/portraits/men/4.jpg",
         bio: "",
         availabilities: "",
@@ -62,6 +63,9 @@ class TutorProfile extends Component {
       <div className="tutor">
         <div className="tutor-TutorProfile">
           <div className="tutor-topHeader">
+            <img  src={ "https://randomuser.me/api/portraits/men/4.jpg" }
+                  alt={ this.state.user.firstname + this.state.user.lastname }
+                  className="tutor-profpic"/>
             <h3 className="tutor-schoolYearAndRate">{this.state.user.university} CLASS OF 2019 • ${this.state.user.hourly_rate}/HOUR</h3>
             <h1 className="tutor-name">{this.state.user.name}</h1>
             <p className="tutor-schoolYearAndRate">{this.state.user.school} Class of {this.state.user.year} • {this.state.user.rate}</p>
@@ -104,7 +108,3 @@ class TutorProfile extends Component {
 }
 
 export default TutorProfile;
-
-// <img  src={ this.state.user.profpicURL }
-//       alt={ this.state.user.name }
-//       className="tutor-profpic"/>

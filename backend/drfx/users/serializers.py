@@ -7,6 +7,7 @@ class UserSerializer(serializers.ModelSerializer):
         model = models.CustomUser
         # fields = '__all__'
         fields = ('id','email', 'name',
+        fields = ('id','email', 'username','name',
         'password', 'university','bio', 'client_rating',
         'is_tutor', 'tutor_rating','hourly_rate','availabilities'
         )
