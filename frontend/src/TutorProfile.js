@@ -34,20 +34,27 @@ class TutorProfile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: null,
-      userID: null
+      user: {
+        id: -1,
+        name: "",
+        profpicURL: "https://randomuser.me/api/portraits/men/4.jpg",
+        bio: "",
+        availabilities: "",
+        courses: "",
+        university: "",
+        year: 0
+      }
     };
   }
 
   componentDidMount() {
 
     const { match: { params } } = this.props;
-    this.setState({ userID: params.id });
 
-    // axios
-    //   .get("/api/v1/users/${userID}")
-    //   .then(res => this.setState({ user: res.data }))
-    //   .catch(err => console.log(err));
+    axios
+      .get("/api/v1/users/" + params.userID)
+      .then(res => this.setState({ user: res.data[0] }))
+      .catch(err => console.log(err));
   }
 
   render() {
@@ -55,10 +62,8 @@ class TutorProfile extends Component {
       <div className="tutor">
         <div className="tutor-TutorProfile">
           <div className="tutor-topHeader">
-            <img  src={ this.state.user.profpicURL }
-                  alt={ this.state.user.name }
-                  className="tutor-profpic"/>
-            <h3 className="tutor-schoolYearAndRate">{this.state.user.school} CLASS OF {this.state.user.year} • {this.state.user.rate}</h3>
+
+            <h3 className="tutor-schoolYearAndRate">{this.state.user.university} CLASS OF 2019 • ${this.state.user.hourly_rate}/HOUR</h3>
             <h1 className="tutor-name">{this.state.user.name}</h1>
             <p className="tutor-description">{this.state.user.bio}</p>
           </div>
@@ -99,3 +104,7 @@ class TutorProfile extends Component {
 }
 
 export default TutorProfile;
+
+// <img  src={ this.state.user.profpicURL }
+//       alt={ this.state.user.name }
+//       className="tutor-profpic"/>
