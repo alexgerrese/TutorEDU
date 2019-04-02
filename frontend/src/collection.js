@@ -5,36 +5,36 @@ import NavBar from './NavBar';
 import { Link } from 'react-router-dom';
 import axios from "axios";
 
-const tutors = [{
-  id: 123,
-  name: "Justin Robinson",
-  profpicURL: "https://randomuser.me/api/portraits/men/4.jpg",
-  bio: "I’m a senior studying Computer Science and pursuing a PhD in machine learning. I love helping others learn!",
-  availabilities: "Mon-Fri 10am-1:30pm, Sat 4pm-6pm",
-  courses: ["CS290","I&E342"],
-  university: "",
-  year: 0
-},
-{
-  id: 222,
-  name: "Farid Salim",
-  profpicURL: "https://randomuser.me/api/portraits/men/7.jpg",
-  bio: "I’m a senior studying Computer Science and pursuing a PhD in machine learning. I love helping others learn!",
-  availabilities: "Mon-Fri 10am-1:30pm, Sat 4pm-6pm",
-  courses: ["CS290","I&E342"],
-  university: "",
-  year: 0
-},
-{
-  id: 541,
-  name: "Alison Bree",
-  profpicURL: "https://randomuser.me/api/portraits/women/8.jpg",
-  bio: "I’m a senior studying Computer Science and pursuing a PhD in machine learning. I love helping others learn!",
-  availabilities: "Mon-Fri 10am-1:30pm, Sat 4pm-6pm",
-  courses: ["CS290","I&E342"],
-  university: "",
-  year: 0
-}]
+// const tutors = [{
+//   id: 123,
+//   name: "Justin Robinson",
+//   profpicURL: "https://randomuser.me/api/portraits/men/4.jpg",
+//   bio: "I’m a senior studying Computer Science and pursuing a PhD in machine learning. I love helping others learn!",
+//   availabilities: "Mon-Fri 10am-1:30pm, Sat 4pm-6pm",
+//   courses: ["CS290","I&E342"],
+//   university: "",
+//   year: 0
+// },
+// {
+//   id: 222,
+//   name: "Farid Salim",
+//   profpicURL: "https://randomuser.me/api/portraits/men/7.jpg",
+//   bio: "I’m a senior studying Computer Science and pursuing a PhD in machine learning. I love helping others learn!",
+//   availabilities: "Mon-Fri 10am-1:30pm, Sat 4pm-6pm",
+//   courses: ["CS290","I&E342"],
+//   university: "",
+//   year: 0
+// },
+// {
+//   id: 541,
+//   name: "Alison Bree",
+//   profpicURL: "https://randomuser.me/api/portraits/women/8.jpg",
+//   bio: "I’m a senior studying Computer Science and pursuing a PhD in machine learning. I love helping others learn!",
+//   availabilities: "Mon-Fri 10am-1:30pm, Sat 4pm-6pm",
+//   courses: ["CS290","I&E342"],
+//   university: "",
+//   year: 0
+// }]
 
 class Collection extends Component {
   constructor(props) {
@@ -59,10 +59,6 @@ class Collection extends Component {
               <TutorCard  key={k}
                           user={user}/>
             ))}
-          {tutors.map((tutor,k) => (
-            <TutorCard  key={k}
-                        user={tutor}/>
-          ))}
           </div>
         </div>
       )

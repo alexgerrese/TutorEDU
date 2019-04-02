@@ -63,7 +63,7 @@ class TutorProfile extends Component {
       <div className="tutor">
         <div className="tutor-TutorProfile">
           <div className="tutor-topHeader">
-            <img  src={ "https://randomuser.me/api/portraits/men/4.jpg" }
+            <img  src={ "https://randomuser.me/api/portraits/men/" + this.state.user.id + ".jpg" }
                   alt={ this.state.user.firstname + this.state.user.lastname }
                   className="tutor-profpic"/>
             <h3 className="tutor-schoolYearAndRate">{this.state.user.university} CLASS OF 2019 • ${this.state.user.hourly_rate}/HOUR</h3>
