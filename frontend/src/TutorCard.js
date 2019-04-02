@@ -33,7 +33,7 @@ class TutorCard extends Component {
           <p>{this.props.user.bio}</p>
           <h4 className="tutor-availabilities">AVAILABILITIES</h4>
           <p>{this.props.user.availabilities}</p>
-            <Link to={{ pathname: "/tutors/" + this.props.user.userID }}>
+            <Link to={{ pathname: "/tutors/" + this.props.user.id }}>
               <Button>View Profile</Button>
             </Link>
         </div>

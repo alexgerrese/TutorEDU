@@ -54,7 +54,7 @@ class TutorProfile extends Component {
   componentDidMount() {
 
     const { match: { params } } = this.props;
-    this.setState({ userID: params.userID });
+    this.setState({ userID: params.id });
 
     // axios
     //   .get("/api/v1/users/${userID}")
