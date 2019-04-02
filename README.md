@@ -2,8 +2,12 @@
 
 ## Instructions to run and test application
 ### Run the backend
-1. cd into the ‘backend’ folder
-2. ???
+1. cd into TutorEDU/backend/drfx
+2. pipenv shell
+3. python manage.py runserver
+4. If error, try:
+ * python manage.py makemigrations
+ * python manage.py migrate
 
 ### Run the frontend
 1. cd into the ‘frontend’ folder
@@ -26,8 +30,18 @@
 * Created Course model with all necessary attributes
 * Created Appointment model with all necessary attributes
 * Created (unlinked to React) authentication framework with strong password verification, password reset, sign up and sign in
+* Below are links to various pages
+  http://127.0.0.1:8000/api/v1/rest-auth/login/
+  http://127.0.0.1:8000/api/v1/rest-auth/registration/
+  http://127.0.0.1:8000/api/v1/rest-auth/logout/
+  http://127.0.0.1:8000/api/v1/users/
+  http://127.0.0.1:8000/api/v1/users/1/
+  http://127.0.0.1:8000/api/v1/users/appointment/
+  http://127.0.0.1:8000/api/v1/users/subject/
+  http://127.0.0.1:8000/admin/
 
 ## Issues we couldn’t solve
-
+Not able to update or remove objects using rest framework.
 ## Estimated completion time
-~8 hours per person
+~8 hours each Alex/Jack
+~40 hours each Jaidha/Noah

@@ -1,6 +1,7 @@
 # api/urls.py
 from django.urls import include, path
 from . import views
+from rest_auth.views import (PasswordResetConfirmView,PasswordResetView)
 
 urlpatterns = [
     path('users/', include('users.urls')),
