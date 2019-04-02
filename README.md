@@ -1,5 +1,7 @@
 # E3 Progress Report
 
+# DEMO: https://www.youtube.com/watch?v=jFjIv956_E8&feature=youtu.be
+
 ## Instructions to run and test application
 ### Run the backend
 1. cd into TutorEDU/backend/drfx
