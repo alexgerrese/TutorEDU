@@ -2,6 +2,7 @@
 from django.contrib.auth.models import AbstractUser
 from .validators import validate_school_email
 from django.db import models
+import datetime
 
 class CustomUser(AbstractUser):
     name = models.CharField(default='blank', blank=True, max_length=40)
@@ -13,5 +14,22 @@ class CustomUser(AbstractUser):
     tutor_rating = models.IntegerField(default='5', blank=True)
     hourly_rate = models.FloatField(null=True, blank=True, default=None)
     availabilities = models.CharField(default='blank', blank=True, max_length=2000)
+
+class Subject(models.Model):
+    id = models.IntegerField(default='5', blank=True, primary_key=True)
+    course_name = models.CharField(default='blank', blank=True, max_length=40)
+    description = models.CharField(default='blank', blank=True, max_length=2000)
+#
+class Appointment(models.Model):
+    id = models.IntegerField(default='5', blank=True, primary_key=True)
+    tutor_id = models.IntegerField(default='5', blank=True)
+    client_id = models.IntegerField(default='5', blank=True)
+    course_id = models.IntegerField(default='5', blank=True)
+    additional_comments = models.CharField(default='blank', blank=True, max_length=200)
+    date = models.DateField(("Date"), auto_now_add=True)
+    location = models.CharField(default='blank', blank=True, max_length=40)
+    status = models.CharField(default='blank', blank=True, max_length=20)
+    rating = models.IntegerField(default='5', blank=True)
+
     def __str__(self):
         return self.email
