@@ -1,4 +1,4 @@
-# s2019-cs290-e3-324
+# E3 Progress Report
 
 ## Instructions to run and test application
 ### Run the backend
