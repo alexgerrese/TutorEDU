@@ -34,7 +34,19 @@ class TutorProfile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: null,
+      user: {
+        id: 222,
+        name: "Farid Salim",
+        profpicURL: "https://randomuser.me/api/portraits/men/7.jpg",
+        bio: "I’m a senior studying Computer Science and pursuing a PhD in machine learning. I love helping others learn!",
+        availabilities: "Mon-Fri 10am-1:30pm, Sat 4pm-6pm",
+        courses: [<Button>CS290</Button>,<Button>I&E 342</Button>],
+        rating: "4.7 Stars • 13 Reviews",
+        school: "Duke University",
+        year: "2021",
+        rate: "$50/hr",
+        reportCard: "I've gotten B+s in every single Computer Science course because my real name is Alex Salas."
+      },
       userID: null
     };
   }
@@ -58,8 +70,9 @@ class TutorProfile extends Component {
             <img  src={ this.state.user.profpicURL }
                   alt={ this.state.user.name }
                   className="tutor-profpic"/>
-            <h3 className="tutor-schoolYearAndRate">{this.state.user.school} CLASS OF {this.state.user.year} • {this.state.user.rate}</h3>
+                  <p></p>
             <h1 className="tutor-name">{this.state.user.name}</h1>
+            <p className="tutor-schoolYearAndRate">{this.state.user.school} Class of {this.state.user.year} • {this.state.user.rate}</p>
             <p className="tutor-description">{this.state.user.bio}</p>
           </div>
           <div className="tutor-rating">
@@ -68,7 +81,7 @@ class TutorProfile extends Component {
           </div>
           <div className="tutor-classes">
             <h4 className="tutor-classes">CLASSES</h4>
-            <p>{this.state.user.classes}</p>
+            <p>{this.state.user.courses}</p>
           </div>
           <div className="tutor-availability">
             <h4 className="tutor-availability">AVAILABILITIES</h4>
