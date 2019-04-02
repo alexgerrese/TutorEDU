@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './styles.css';
 import styled from 'styled-components';
+import axios from "axios";
 
 const Button = styled.button`
   height: 40px;
@@ -30,33 +31,52 @@ const Button = styled.button`
 
 class TutorProfile extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: null,
+      userID: null
+    };
+  }
+
+  componentDidMount() {
+
+    const { match: { params } } = this.props;
+    this.setState({ userID: params.userID });
+
+    // axios
+    //   .get("/api/v1/users/${userID}")
+    //   .then(res => this.setState({ user: res.data }))
+    //   .catch(err => console.log(err));
+  }
+
   render() {
     return (
       <div className="tutor">
         <div className="tutor-TutorProfile">
           <div className="tutor-topHeader">
-            <img  src={ this.props.profpicURL }
-                  alt={ this.props.name }
+            <img  src={ this.state.user.profpicURL }
+                  alt={ this.state.user.name }
                   className="tutor-profpic"/>
-            <h3 className="tutor-schoolYearAndRate">{this.props.school} CLASS OF {this.props.year} • {this.props.rate}</h3>
-            <h1 className="tutor-name">{this.props.name}</h1>
-            <p className="tutor-description">{this.props.bio}</p>
+            <h3 className="tutor-schoolYearAndRate">{this.state.user.school} CLASS OF {this.state.user.year} • {this.state.user.rate}</h3>
+            <h1 className="tutor-name">{this.state.user.name}</h1>
+            <p className="tutor-description">{this.state.user.bio}</p>
           </div>
           <div className="tutor-rating">
             <h4 className="tutor-rating">RATING</h4>
-            <p>{this.props.rating}</p>
+            <p>{this.state.user.rating}</p>
           </div>
           <div className="tutor-classes">
             <h4 className="tutor-classes">CLASSES</h4>
-            <p>{this.props.classes}</p>
+            <p>{this.state.user.classes}</p>
           </div>
           <div className="tutor-availability">
             <h4 className="tutor-availability">AVAILABILITIES</h4>
-            <p>{this.props.availabilities}</p>
+            <p>{this.state.user.availabilities}</p>
           </div>
           <div className="tutor-reportCard">
             <h4 className="tutor-reportCard">REPORT CARD</h4>
-            <p>{this.props.reportCard}</p>
+            <p>{this.state.user.reportCard}</p>
           </div>
         </div>
         <div className="tutor-appointment">
@@ -71,7 +91,7 @@ class TutorProfile extends Component {
 
 
           <Button>Submit Request</Button>
-          <p>{this.props.name} will get back to you within 24 hours.</p>
+          <p>We will get back to you within 24 hours.</p>
         </div>
       </div>
     )

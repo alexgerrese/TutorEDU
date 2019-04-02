@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import axios from "axios";
 
 const tutors = [{
+  id: 123,
   name: "Justin Robinson",
   profpicURL: "https://randomuser.me/api/portraits/men/4.jpg",
   bio: "I’m a senior studying Computer Science and pursuing a PhD in machine learning. I love helping others learn!",
@@ -13,6 +14,7 @@ const tutors = [{
   courses: ["CS290","I&E342"]
 },
 {
+  id: 222,
   name: "Farid Salim",
   profpicURL: "https://randomuser.me/api/portraits/men/7.jpg",
   bio: "I’m a senior studying Computer Science and pursuing a PhD in machine learning. I love helping others learn!",
@@ -20,6 +22,7 @@ const tutors = [{
   courses: ["CS290","I&E342"]
 },
 {
+  id: 541,
   name: "Alison Bree",
   profpicURL: "https://randomuser.me/api/portraits/women/8.jpg",
   bio: "I’m a senior studying Computer Science and pursuing a PhD in machine learning. I love helping others learn!",
@@ -48,17 +51,11 @@ class Collection extends Component {
         <div className="collection">
             {this.state.users.map((user,k) => (
               <TutorCard  key={k}
-                          name={user.username}
-                          profpicURL={""}
-                          bio={"hello"}
-                          availabilities={"hello"}/>
+                          user={user}/>
             ))}
           {tutors.map((tutor,k) => (
             <TutorCard  key={k}
-                        name={tutor.name}
-                        profpicURL={tutor.profpicURL}
-                        bio={tutor.bio}
-                        availabilities={tutor.availabilities}/>
+                        user={tutor}/>
           ))}
           </div>
         </div>
