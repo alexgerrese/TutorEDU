@@ -35,6 +35,7 @@ class TutorProfile extends Component {
     super(props);
     this.state = {
       user: {
+<<<<<<< HEAD
         id: -1,
         name: "",
         profpicURL: "https://randomuser.me/api/portraits/men/4.jpg",
@@ -44,6 +45,21 @@ class TutorProfile extends Component {
         university: "",
         year: 0
       }
+=======
+        id: 222,
+        name: "Farid Salim",
+        profpicURL: "https://randomuser.me/api/portraits/men/7.jpg",
+        bio: "I’m a senior studying Computer Science and pursuing a PhD in machine learning. I love helping others learn!",
+        availabilities: "Mon-Fri 10am-1:30pm, Sat 4pm-6pm",
+        courses: [<Button>CS290</Button>,<Button>I&E 342</Button>],
+        rating: "4.7 Stars • 13 Reviews",
+        school: "Duke University",
+        year: "2021",
+        rate: "$50/hr",
+        reportCard: "I've gotten B+s in every single Computer Science course because my real name is Alex Salas."
+      },
+      userID: null
+>>>>>>> bf07c043ec56039b00bcd62a8992a4dc67c935b4
     };
   }
 
@@ -62,9 +78,17 @@ class TutorProfile extends Component {
       <div className="tutor">
         <div className="tutor-TutorProfile">
           <div className="tutor-topHeader">
+<<<<<<< HEAD
 
             <h3 className="tutor-schoolYearAndRate">{this.state.user.university} CLASS OF 2019 • ${this.state.user.hourly_rate}/HOUR</h3>
+=======
+            <img  src={ this.state.user.profpicURL }
+                  alt={ this.state.user.name }
+                  className="tutor-profpic"/>
+                  <p></p>
+>>>>>>> bf07c043ec56039b00bcd62a8992a4dc67c935b4
             <h1 className="tutor-name">{this.state.user.name}</h1>
+            <p className="tutor-schoolYearAndRate">{this.state.user.school} Class of {this.state.user.year} • {this.state.user.rate}</p>
             <p className="tutor-description">{this.state.user.bio}</p>
           </div>
           <div className="tutor-rating">
@@ -73,7 +97,7 @@ class TutorProfile extends Component {
           </div>
           <div className="tutor-classes">
             <h4 className="tutor-classes">CLASSES</h4>
-            <p>{this.state.user.classes}</p>
+            <p>{this.state.user.courses}</p>
           </div>
           <div className="tutor-availability">
             <h4 className="tutor-availability">AVAILABILITIES</h4>
