@@ -39,8 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # 'allauth',
     # 'allauth.account',
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.openid',
+    # 'allauth.socialaccount',
+    # 'allauth.socialaccount.providers.openid',
 
     'rest_framework',
     'rest_framework.authtoken',

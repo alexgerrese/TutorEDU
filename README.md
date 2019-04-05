@@ -10,6 +10,10 @@
 4. If error, try:
  * python manage.py makemigrations
  * python manage.py migrate
+ * pipenv install django
+ * pipenv shell
+ * pipenv install djangorestframework
+ * pipenv install django-rest-auth
 
 ### Run the frontend
 1. cd into the ‘frontend’ folder
@@ -32,6 +36,7 @@
 * Created Course model with all necessary attributes
 * Created Appointment model with all necessary attributes
 * Created (unlinked to React) authentication framework with strong password verification, password reset, sign up and sign in
+* Added password update
 * Below are links to various pages
   http://127.0.0.1:8000/api/v1/rest-auth/login/
   http://127.0.0.1:8000/api/v1/rest-auth/registration/
@@ -41,9 +46,8 @@
   http://127.0.0.1:8000/api/v1/users/appointment/
   http://127.0.0.1:8000/api/v1/users/subject/
   http://127.0.0.1:8000/admin/
+  http://127.0.0.1:8000/api/v1/rest-auth/password/reset/
 
-## Issues we couldn’t solve
-Not able to update or remove objects using rest framework.
 ## Estimated completion time
 ~8 hours each Alex/Jack
 ~40 hours each Jaidha/Noah
