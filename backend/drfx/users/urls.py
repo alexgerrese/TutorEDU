@@ -5,6 +5,9 @@ from rest_framework import routers
 from . import views
 from django.contrib import admin
 
+router = routers.DefaultRouter()
+router.register(r'push_users', views.UserListView)
+router.register(r'appointment', views.AppointmentListView)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
