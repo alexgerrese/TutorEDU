@@ -11,6 +11,7 @@ router.register(r'appointment', views.AppointmentListView)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/users/', views.Appointment_list),
     path('', include('rest_auth.urls')),
     path('',include('django.contrib.auth.urls')),
     path('users/', views.UserListView.as_view()),
