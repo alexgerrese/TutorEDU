@@ -13,7 +13,7 @@ class NavBar extends Component {
             <Navbar.Brand href="/">TutorEDU</Navbar.Brand>
             <Navbar.Toggle />
             <Navbar.Collapse className="justify-content-end">
-              <Navbar.Text>
+              <Navbar.Text className="navbar-appointments">
                 <a href="/appointments">Appointments</a>
               </Navbar.Text>
               <Navbar.Text>

@@ -94,14 +94,14 @@ class Appointments extends Component {
     return (
       <div className="appointments-container">
         <div className="upcoming-appointments">
-          <h2>Upcoming Appointments</h2>
+          <h2 className="upcoming-appointments-text">Upcoming Appointments</h2>
           {this.state.appointments.map((appointment,k) => (
             <AppointmentCard  key={k}
                               appointment={appointment}/>
           ))}
         </div>
         <div className="past-appointments">
-          <h2>Past Appointments</h2>
+          <h2 className="past-appointments-text">Past Appointments</h2>
         </div>
       </div>
     )

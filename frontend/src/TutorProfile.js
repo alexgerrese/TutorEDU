@@ -114,7 +114,7 @@ class TutorProfile extends Component {
             </div>
             <p></p>
             <div className="tutor-info">
-            <h3 className="tutor-schoolYearAndRate">{this.state.user.university.toUpperCase()} • CLASS OF {this.state.user.year} • ${this.state.user.hourly_rate}/HOUR</h3>
+            <h3 className="tutor-schoolYearAndRate">{this.state.user.university.toUpperCase()} • SENIOR • ${this.state.user.hourly_rate}/HOUR</h3>
             <h1 className="tutor-named">{this.state.user.name}</h1>
             <p className="tutor-description">{this.state.user.bio}</p>
             </div>
@@ -129,7 +129,7 @@ class TutorProfile extends Component {
             <div className="tutor-classes">
               <h4 className="tutor-classes">CLASSES</h4>
               <p className="class-details">
-              {this.state.user.courses}</p>
+              PUBPOL 310, COMPSCI 230, SPANISH 220, COMPSCI 250</p>
             </div>
             <div className="tutor-availability">
               <h4 className="tutor-availability">AVAILABILITIES</h4>
@@ -139,7 +139,7 @@ class TutorProfile extends Component {
             <div className="tutor-reportCard">
               <h4 className="tutor-reportCard">REPORT CARD</h4>
               <p className="RCdetails">
-              {this.state.user.reportCard}</p>
+                Something about how I got good grades in these classes, am doing research and you should trust my tutoring capabilities. Something about how I got good grades in these classes.<br/><br/>I am doing research and you should trust my tutoring capabilities. Something about how I got good grades in these classes, am doing research and you should trust my tutoring capabilities.<br/><br/>I am doing research and you should trust my tutoring capabilities. Something about how I got good grades in these classes, am doing research and you should trust my tutoring capabilities.</p>
             </div>
             </div>
         </div>
