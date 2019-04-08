@@ -125,7 +125,7 @@ class TutorProfile extends Component {
               <p></p>
               <h4 className="tutor-rating">RATING</h4>
               <p className="rating-details">
-              {this.state.user.tutor_rating}/5</p>
+              {this.state.user.tutor_rating}/5 stars</p>
             </div>
             <div className="tutor-classes">
               <h4 className="tutor-classes">CLASSES</h4>

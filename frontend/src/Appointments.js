@@ -102,6 +102,7 @@ class Appointments extends Component {
         </div>
         <div className="past-appointments">
           <h2 className="past-appointments-text">Past Appointments</h2>
+          <p className="tutor-results">No past appointments</p>
         </div>
       </div>
     )

@@ -50,23 +50,23 @@ class Collection extends Component {
       .then(res => this.setState({ users: res.data }))
       .catch(err => console.log(err));
 
-      axios.post('/api/users/', {
-        id: 100,
-        tutor_id: 5,
-        client_id: 5,
-        course_id: 5,
-        additional_comments: "blank",
-        date: "2019-04-02",
-        location: "blank",
-        status: "blank",
-        rating: 5
-        })
-        .then(function (response) {
-          console.log(response);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
+      // axios.post('/api/users/', {
+      //   id: 100,
+      //   tutor_id: 5,
+      //   client_id: 5,
+      //   course_id: 5,
+      //   additional_comments: "blank",
+      //   date: "2019-04-02",
+      //   location: "blank",
+      //   status: "blank",
+      //   rating: 5
+      //   })
+      //   .then(function (response) {
+      //     console.log(response);
+      //   })
+      //   .catch(function (error) {
+      //     console.log(error);
+      //   });
   }
 
   render() {
@@ -77,6 +77,7 @@ class Collection extends Component {
               <TutorCard  key={k}
                           user={user}/>
             ))}
+            <p className="tutor-results">{this.state.users.length} tutors found.</p>
           </div>
         </div>
       )

@@ -31,6 +31,10 @@ h4 {
   box-sizing: border-box;
 }
 
+.paragraph {
+  color: #898989;
+}
+
 /* NAVBAR COMPONENT */
 
 .navbar {
@@ -45,8 +49,18 @@ h4 {
 
 .collection {
   width: 75%;
+  max-width: 1100px;
   display: inline-block;
 }
+
+.tutor-results {
+  color: #898989;
+  font-family: Avenir;
+  font-size: 14px;
+  text-align: center;
+  padding: 20px;
+}
+
 
 /* TUTOR CARD COMPONENT */
 .tutor-card {
@@ -71,6 +85,7 @@ h4 {
 .tutor-profpic {
   height: 80px;
   width: 80px;
+  border: 3px solid #ECECEC;
   border-radius: 40px;
   text-align: center;
 }
@@ -191,6 +206,7 @@ h4 {
 .appointment-card-profpic {
   height: 80px;
   width: 80px;
+  border: 3px solid #ECECEC;
   border-radius: 40px;
   vertical-align: middle;
   margin-left: 12px;
@@ -236,6 +252,7 @@ h4 {
 .upcoming-appointments {
   display: inline-block;
   width: 60%;
+  max-width: 1000px;
   text-align: left;
 }
 
@@ -248,6 +265,7 @@ h4 {
 .past-appointments {
   display: inline-block;
   width: 60%;
+  max-width: 1000px;
   text-align: left;
   font-family: "Avenir-Heavy";
   font-size: 24px;
@@ -274,10 +292,11 @@ h4 {
 
 .tutor-profpicture {
   display: block;
+  border: 3px solid #ECECEC;
   border-radius: 100px;
   width: 110px;
   height: 110px;
-  margin-left: 145px;
+  /* margin-left: 145px; */
   margin-top: 32px;
 }
 
@@ -287,21 +306,48 @@ h4 {
   text-align: left;
 }
 
-.tutor-appointment {
-  /* float:right; */
-  margin-right: 120px;
+
+
+.tutor {
+  text-align: center;
 }
 
-.tutor-TutorProfile {
-  float:left;
-  margin-left: 120px;
+@media screen and (min-width: 1200px) {
+  .tutor-TutorProfile {
+    display: inline-block;
+    /* float: left; */
+    margin-left: 228px;
+  }
+  .tutor-appointment {
+    /* float: left; */
+    /* margin-right: 120px; */
+    margin-left: 40px;
+    display: inline-block;
+  }
 }
+
+@media screen and (max-width: 1200px) {
+  .tutor-TutorProfile {
+    display: inline-block;
+    float: left;
+    margin-left: 20%;
+  }
+  .tutor-appointment {
+    /* float: left; */
+    /* margin-right: 120px; */
+    margin-left: 40px;
+    display: inline-block;
+  }
+}
+
+
 
 .tutor-info {
   max-width: 26em;
-  margin-left: 280px;
+  /* margin-left: 280px; */
   margin-top: -120px;
   margin-right: 40px;
+  margin-left: 132px;
   display: flex;
   text-wrap: wrap;
   text-align: center;
@@ -315,7 +361,8 @@ h4 {
 
 .tutor-stats {
   margin-top: 40px;
-  margin-left: 160px;
+  margin-right: 24px;
+  /* margin-left: 160px; */
 }
 
 .rating-details {
