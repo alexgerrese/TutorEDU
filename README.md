@@ -38,15 +38,16 @@
 * Created (unlinked to React) authentication framework with strong password verification, password reset, sign up and sign in
 * Added password update
 * Below are links to various pages
-  http://127.0.0.1:8000/api/v1/rest-auth/login/
-  http://127.0.0.1:8000/api/v1/rest-auth/registration/
-  http://127.0.0.1:8000/api/v1/rest-auth/logout/
-  http://127.0.0.1:8000/api/v1/users/
-  http://127.0.0.1:8000/api/v1/users/1/
-  http://127.0.0.1:8000/api/v1/users/appointment/
-  http://127.0.0.1:8000/api/v1/users/subject/
+
+  http://127.0.0.1:8000/login/
+  http://127.0.0.1:8000/registration/
+  http://127.0.0.1:8000/logout/
+  http://127.0.0.1:8000/password/reset/
+  http://127.0.0.1:8000/users/
+  http://127.0.0.1:8000/user/1/
+  http://127.0.0.1:8000/appointment/
+  http://127.0.0.1:8000/subject/
   http://127.0.0.1:8000/admin/
-  http://127.0.0.1:8000/api/v1/rest-auth/password/reset/
 
 ## Estimated completion time
 ~8 hours each Alex/Jack
