@@ -46,7 +46,7 @@ class Collection extends Component {
 
   componentDidMount() {
     axios
-      .get("/api/v1/users/")
+      .get("/users/")
       .then(res => this.setState({ users: res.data }))
       .catch(err => console.log(err));
   }

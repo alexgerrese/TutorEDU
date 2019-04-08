@@ -6,7 +6,7 @@ body {
 
 h1 {
   font-family: "Avenir";
-  font-size: 28;
+  font-size: 28px;
   text-align: center;
 }
 
@@ -92,7 +92,7 @@ h4 {
   font-size: 12px;
   color: #000000;
   letter-spacing: 2px;
-  text-align: center;
+  text-align: left;
 }
 
 .tutor-classes {
@@ -100,7 +100,8 @@ h4 {
   font-size: 12px;
   color: #000000;
   letter-spacing: 2px;
-  text-align: center;
+  text-align: left;
+
 }
 
 .tutor-availability {
@@ -108,7 +109,8 @@ h4 {
   font-size: 12px;
   color: #000000;
   letter-spacing: 2px;
-  text-align: center;
+  text-align: left;
+
 }
 
 .tutor-reportCard {
@@ -116,21 +118,22 @@ h4 {
   font-size: 12px;
   color: #000000;
   letter-spacing: 2px;
-  text-align: center;
+  text-align: left;
+
 }
 
 .tutor-schoolYearAndRate {
   font-family: Avenir-Heavy;
   font-size: 14px;
-  color: #000000;
+  color: #0d47a1;
   letter-spacing: 2px;
-  text-align: center;
+  text-align: left;
 }
 
 .tutor-appointment {
   display: inline-block;
   overflow: hidden;
-  height: 450px;
+  height: 480px;
   width: 300px;
   border-radius: 8px;
   box-shadow: 1px 1px 4px rgba(0,0,0,0.10);
@@ -138,7 +141,7 @@ h4 {
   transition: all .1s ease-in-out;
   font-family: Avenir-Book;
   font-size: 14px;
-  text-align: center;
+  text-align: left;
   padding: 24px;
   background-color: white;
 }
@@ -148,15 +151,16 @@ h4 {
   font-size: 20px;
   color: #000000;
   letter-spacing: 2px;
-  text-align: center;
+  text-align: left;
 }
 
 .tutor-description {
-  font-family: Avenir-Heavy;
+  font-family: Avenir;
   font-size: 14px;
-  color: #000000;
+  color: #757575;
   letter-spacing: 2px;
-  text-align: center;
+  text-align: left;
+
 }
 
 /* APPOINTMENT CARD COMPONENT */
@@ -226,4 +230,74 @@ h4 {
 .upcoming-appointments {
   /* text-align: center; */
   /* width: 60%; */
+}
+
+.availability-input {
+  width: 250px;
+}
+
+.description-input {
+  width: 250px;
+}
+
+.tutor-profpicture {
+  display: block;
+  border-radius: 100px;
+  width: 125px;
+  height: 125px;
+  margin-left: 50px;
+  margin-top: 40px;
+  ;
+}
+
+.tutor-named {
+  font-family: "Avenir-Heavy";
+  font-size: 24px;
+  text-align: left;
+}
+
+.tutor-appointment {
+  float:right;
+  margin-right: 120px;
+}
+
+.tutor-TutorProfile {
+  float:left;
+  margin-left: 100px;
+}
+
+.tutor-info {
+  max-width: 30em;
+  margin-left: 220px;
+  margin-top: -120px;
+  display: flex;
+  text-wrap: wrap;
+  text-align: center;
+  flex-direction: column;
+
+}
+
+.tutor-stats {
+  margin-top: 40px;
+  margin-left: 75px;
+}
+
+.rating-details {
+  color: #757575;
+  font-family: Avenir;
+}
+
+.class-details {
+  color: #757575;
+  font-family: Avenir;
+}
+
+.availability-details {
+  color: #757575;
+  font-family: Avenir;
+}
+
+.RCdetails {
+  color: #757575;
+  font-family: Avenir;
 }
