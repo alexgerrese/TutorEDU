@@ -1,5 +1,6 @@
 # users/views.py
 from rest_framework import generics
+from rest_framework.response import Response
 from . import models
 from . import serializers
 from users.models import CustomUser
@@ -18,9 +19,8 @@ class AppointmentListView(generics.ListCreateAPIView):
     queryset = models.Appointment.objects.all()
     serializer_class = serializers.AppointmentSerializer
 
-class UserID(generics.ListCreateAPIView):
+class UpdateID(generics.RetrieveUpdateAPIView):
     serializer_class = serializers.UserSerializer
 
     def get_queryset(self):
-        user = self.request.user
         return CustomUser.objects.filter(id = self.kwargs['pk'])
