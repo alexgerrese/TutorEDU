@@ -11,6 +11,7 @@ class CustomUser(AbstractUser):
     bio = models.CharField(default='blank', blank=True, max_length=2000)
     client_rating = models.IntegerField(default='5', blank=True)
     is_tutor = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
     tutor_rating = models.IntegerField(default='5', blank=True)
     hourly_rate = models.FloatField(null=True, blank=True, default=None)
     availabilities = models.CharField(default='blank', blank=True, max_length=2000)

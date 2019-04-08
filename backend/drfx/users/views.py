@@ -19,7 +19,7 @@ class AppointmentListView(generics.ListCreateAPIView):
     queryset = models.Appointment.objects.all()
     serializer_class = serializers.AppointmentSerializer
 
-class UpdateID(generics.RetrieveUpdateAPIView):
+class UpdateUserID(generics.RetrieveUpdateAPIView):
     serializer_class = serializers.UserSerializer
 
     def get_queryset(self):
