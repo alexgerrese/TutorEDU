@@ -7,11 +7,11 @@ import { Link } from "react-router-dom";
 const StyledDropdown = styled.select`
   height: 40px;
   width: 250px;
-  border: 2px solid #D9E2FF;
+  border: 1px solid #ECECEC;
   border-radius: 4px;
   font-family: Avenir-Heavy;
   font-size: 12px;
-  color: #1C3A9F;
+  color: black;
   letter-spacing: 0;
   text-align: center;
   justifyContent: center;
@@ -30,6 +30,7 @@ const Button = styled.button`
   text-align: center;
   justifyContent: center;
   alignItems: center;
+  margin-top: 12px;
 
   :hover {
     color: white;
