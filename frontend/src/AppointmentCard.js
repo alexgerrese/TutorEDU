@@ -67,14 +67,17 @@ class AppointmentCard extends Component {
       hourlyRate: 40,
       clientName: "Yo Mammababa",
     };
+
   }
 
 // TODO: UNCOMMENT WHEN API IS READY
-  // componentDidMount() {
-  //   getCourseNameFromId(this.props.appointment.course_id)
-  //   getTutorFromId(this.props.appointment.tutor_id)
-  //   getClientNameFromId(this.props.appointment.client_id)
-  // }
+  componentDidMount() {
+    // getCourseNameFromId(this.props.appointment.course_id)
+    this.getTutorFromId(this.props.appointment.tutor_id)
+    this.getClientNameFromId(this.props.appointment.client_id)
+    console.log("TUTORID: " + this.props.appointment.tutor_id)
+    console.log("CLIENTID: " + this.props.appointment.client_id)
+  }
   //
   // getCourseNameFromId(courseId) {
   //   axios
@@ -83,29 +86,29 @@ class AppointmentCard extends Component {
   //     .catch(err => console.log(err));
   // }
   //
-  // getTutorFromId(tutorId) {
-  //   axios
-  //     .get("/api/v1/users/" + tutorId)
-  //     .then(res => {
-  //       this.setState({ tutorName: res.data.name })
-  //       this.setState({ hourlyRate: res.data.hourlyRate })
-  //     })
-  //     .catch(err => console.log(err));
-  // }
-  //
-  // getClientNameFromId(clientId) {
-  //   axios
-  //     .get("/api/v1/users/" + clientId)
-  //     .then(res => this.setState({ clientName: res.data.name }))
-  //     .catch(err => console.log(err));
-  // }
+  getTutorFromId(tutorId) {
+    axios
+      .get("/user/" + tutorId)
+      .then(res => {
+        this.setState({ tutorName: res.data.name })
+        this.setState({ hourlyRate: res.data.hourly_rate })
+      })
+      .catch(err => console.log(err));
+  }
+
+  getClientNameFromId(clientId) {
+    axios
+      .get("/user/" + clientId)
+      .then(res => this.setState({ clientName: res.data.name }))
+      .catch(err => console.log(err));
+  }
 
   render() {
     return (
       <div className="appointment-card-container">
         <div className="appointment-card-card">
           <div className="appointment-card-left">
-            <img className="appointment-card-profpic" src="https://randomuser.me/api/portraits/men/4.jpg" alt="Tutor Profile Pic"/>
+            <img className="appointment-card-profpic" src={"https://randomuser.me/api/portraits/men/" + this.props.appointment.tutor_id + ".jpg"} alt="Tutor Profile Pic"/>
             <div className="appointment-card-text">
               <h3 className="appointment-card-name">{this.state.tutorName}</h3>
               <p className="appointment-card-details">{this.state.courseName} • ${this.state.hourlyRate}/HOUR</p>

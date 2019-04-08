@@ -30,45 +30,64 @@ const Button = styled.button`
   }
 `;
 
-const appointments = [{
-  id: 1,
-  tutor_id: 2,
-  client_id: 3,
-  course_id: 214,
-  additional_comments: "I'd like extra help on covalent bonds please!",
-  location: "Perkins 1st floor",
-  status: "Waiting for response",
-  rating: null,
-},
-{
-  id: 2,
-  tutor_id: 2,
-  client_id: 1,
-  course_id: 222,
-  additional_comments: "I'd like extra help on math concepts ya kno.",
-  location: "Bostock 4th floor",
-  status: "Confirmed",
-  rating: null,
-},
-{
-  id: 3,
-  tutor_id: 2,
-  client_id: 3,
-  course_id: 214,
-  additional_comments: "I'd like extra help on covalent bonds please!",
-  location: "CIEMAS",
-  status: "Completed",
-  rating: null,
-},
-]
+// const appointments = [{
+//   id: 1,
+//   tutor_id: 2,
+//   client_id: 3,
+//   course_id: 214,
+//   additional_comments: "I'd like extra help on covalent bonds please!",
+//   location: "Perkins 1st floor",
+//   status: "Waiting for response",
+//   rating: null,
+// },
+// {
+//   id: 2,
+//   tutor_id: 2,
+//   client_id: 1,
+//   course_id: 222,
+//   additional_comments: "I'd like extra help on math concepts ya kno.",
+//   location: "Bostock 4th floor",
+//   status: "Confirmed",
+//   rating: null,
+// },
+// {
+//   id: 3,
+//   tutor_id: 2,
+//   client_id: 3,
+//   course_id: 214,
+//   additional_comments: "I'd like extra help on covalent bonds please!",
+//   location: "CIEMAS",
+//   status: "Completed",
+//   rating: null,
+// },
+// ]
 
 class Appointments extends Component {
 
   constructor(props) {
     super(props);
-    // this.state = {
-    //   user: null,
-    // };
+    this.state = {
+      appointments: [{
+        id: 3,
+        tutor_id: 3,
+        client_id: 3,
+        course_id: 214,
+        additional_comments: "I'd like extra help on covalent bonds please!",
+        location: "CIEMAS",
+        status: "Completed",
+        rating: null,
+      }],
+    };
+  }
+
+  componentDidMount() {
+
+    const { match: { params } } = this.props;
+
+    axios
+      .get("/api/users/")
+      .then(res => this.setState({ appointments: res.data }))
+      .catch(err => console.log(err));
   }
 
   render() {
@@ -76,7 +95,7 @@ class Appointments extends Component {
       <div className="appointments-container">
         <div className="upcoming-appointments">
           <h2>Upcoming Appointments</h2>
-          {appointments.map((appointment,k) => (
+          {this.state.appointments.map((appointment,k) => (
             <AppointmentCard  key={k}
                               appointment={appointment}/>
           ))}

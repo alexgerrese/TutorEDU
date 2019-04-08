@@ -175,7 +175,8 @@ h4 {
   width: 100%;
   border-radius: 8px;
   box-shadow: 1px 1px 4px rgba(0,0,0,0.10);
-  margin: 12px;
+  margin-top: 12px;
+  margin-bottom: 12px;
   font-family: Avenir-Book;
   font-size: 14px;
   padding: 24px;
@@ -224,12 +225,27 @@ h4 {
 
 .appointments-container {
   text-align: center;
-  width: 60%;
+  align-items: center;
 }
 
 .upcoming-appointments {
-  /* text-align: center; */
-  /* width: 60%; */
+  display: inline-block;
+  width: 60%;
+  text-align: left;
+  font-family: "Avenir-Heavy";
+  font-size: 24px;
+}
+
+.past-appointments {
+  display: inline-block;
+  width: 60%;
+  text-align: left;
+  font-family: "Avenir-Heavy";
+  font-size: 24px;
+}
+
+.tutor-schoolYearAndRate {
+  font-size: 13px;
 }
 
 .availability-input {
@@ -245,59 +261,101 @@ h4 {
   border-radius: 100px;
   width: 125px;
   height: 125px;
-  margin-left: 50px;
+  margin-left: 120px;
   margin-top: 40px;
-  ;
 }
 
 .tutor-named {
-  font-family: "Avenir-Heavy";
+  font-family: "Avenir-Black";
   font-size: 24px;
   text-align: left;
 }
 
 .tutor-appointment {
-  float:right;
+  /* float:right; */
   margin-right: 120px;
 }
 
 .tutor-TutorProfile {
   float:left;
-  margin-left: 100px;
+  margin-left: 120px;
 }
 
 .tutor-info {
-  max-width: 30em;
-  margin-left: 220px;
+  max-width: 26em;
+  margin-left: 280px;
   margin-top: -120px;
+  margin-right: 40px;
   display: flex;
   text-wrap: wrap;
   text-align: center;
   flex-direction: column;
+}
 
+.tutor-description {
+  letter-spacing: 0px;
+  font-size: 14px;
 }
 
 .tutor-stats {
   margin-top: 40px;
-  margin-left: 75px;
+  margin-left: 160px;
 }
 
 .rating-details {
   color: #757575;
   font-family: Avenir;
+  letter-spacing: 0px;
+  font-size: 14px;
 }
 
 .class-details {
   color: #757575;
   font-family: Avenir;
+  letter-spacing: 0px;
+  font-size: 14px;
 }
 
 .availability-details {
   color: #757575;
   font-family: Avenir;
+  letter-spacing: 0px;
+  font-size: 14px;
 }
 
 .RCdetails {
   color: #757575;
   font-family: Avenir;
+  letter-spacing: 0px;
+  font-size: 14px;
+}
+
+.tutor-appointment-main {
+  font-family: Avenir-Black;
+  letter-spacing: 0px;
+  font-size: 24px;
+}
+
+.schedule-input {
+  font-family: Avenir-Heavy;
+  letter-spacing: 0px;
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
+.text-input-box {
+  height: 36px;
+  width: 250px;
+  border: 1px solid #ECECEC;
+  border-radius: 4px;
+  font-family: Avenir-Heavy;
+  font-size: 12px;
+  letter-spacing: 0;
+  padding-left: 12px;
+}
+
+::placeholder {
+  color: #C9C9C9;
+  font-family: Avenir-Book;
+  font-size: 14px;
 }
