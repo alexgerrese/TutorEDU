@@ -50,6 +50,11 @@
   http://127.0.0.1:8000/subjects/1/
   http://127.0.0.1:8000/admin/
 
+### Backend TODO
+* Replace rest_auth with rest_framework authentication
+* Link models together using foreign keys
+* Photo upload for user models
+
 ## Estimated completion time
 ~8 hours each Alex/Jack
 ~40 hours each Jaidha/Noah
