@@ -39,24 +39,68 @@ class UserDetail(APIView):
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-class SubjectListView(generics.ListCreateAPIView):
-    queryset = models.Subject.objects.all()
-    serializer_class = serializers.SubjectSerializer
+class SubjectListView(APIView):
+    def get(self, request, format=None):
+        subjects = models.Subject.objects.all()
+        serializer = serializers.SubjectSerializer(subjects,many=True)
+        return Response(serializer.data)
 
-class AppointmentListView(generics.ListCreateAPIView):
-    queryset = models.Appointment.objects.all()
-    serializer_class = serializers.AppointmentSerializer
-# @csrf_exempt
-# def Appointment_list(request):
-#     if request.method == 'GET':
-#         appointment = Appointment.objects.all()
-#         serializer = serializers.AppointmentSerializer(appointment, many=True)
-#         return JsonResponse(serializer.data, safe=False)
-#
-#     elif request.method == 'POST':
-#         data = JSONParser().parse(request)
-#         serializer = serializers.AppointmentSerializer(data=data)
-#         if serializer.is_valid():
-#             serializer.save()
-#             return JsonResponse(serializer.data, status=201)
-#         return JsonResponse(serializer.errors, status=400)
+    def post(self, request, format=None):
+        serializer = serializers.SubjectSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class SubjectDetail(APIView):
+    def get_object(self, pk):
+        try:
+            return models.Subject.objects.get(pk=pk)
+        except models.Subject.DoesNotExist:
+            raise Http404
+
+    def get(self, request, pk, format=None):
+        subject = self.get_object(pk)
+        serializer = serializers.SubjectSerializer(subject)
+        return Response(serializer.data)
+
+    def put(self, request, pk, format=None):
+        subject = self.get_object(pk)
+        serializer = serializers.SubjectSerializer(subject)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class AppointmentListView(APIView):
+    def get(self, request, format=None):
+        appointments = models.Appointment.objects.all()
+        serializer = serializers.AppointmentSerializer(appointments,many=True)
+        return Response(serializer.data)
+
+    def post(self, request, format=None):
+        serializer = serializers.AppointmentSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class AppointmentDetail(APIView):
+    def get_object(self, pk):
+        try:
+            return models.Appointment.objects.get(pk=pk)
+        except models.Appointment.DoesNotExist:
+            raise Http404
+
+    def get(self, request, pk, format=None):
+        appointment = self.get_object(pk)
+        serializer = serializers.AppointmentSerializer(appointment)
+        return Response(serializer.data)
+
+    def put(self, request, pk, format=None):
+        appointment = self.get_object(pk)
+        serializer = serializers.AppointmentSerializer(appointment)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

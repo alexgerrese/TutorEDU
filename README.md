@@ -40,13 +40,14 @@
 * Below are links to various pages
 
   http://127.0.0.1:8000/login/
-  http://127.0.0.1:8000/registration/
   http://127.0.0.1:8000/logout/
   http://127.0.0.1:8000/password/reset/
   http://127.0.0.1:8000/users/
-  http://127.0.0.1:8000/user/1/
-  http://127.0.0.1:8000/appointment/
-  http://127.0.0.1:8000/subject/
+  http://127.0.0.1:8000/users/1/
+  http://127.0.0.1:8000/appointments/
+  http://127.0.0.1:8000/appointments/1/
+  http://127.0.0.1:8000/subjects/
+  http://127.0.0.1:8000/subjects/1/
   http://127.0.0.1:8000/admin/
 
 ## Estimated completion time
