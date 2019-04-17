@@ -15,7 +15,6 @@ class CustomUser(AbstractUser):
     tutor_rating = models.IntegerField(default='5', blank=True)
     hourly_rate = models.FloatField(null=True, blank=True, default=None)
     availabilities = models.CharField(default='blank', blank=True, max_length=2000)
-
     def __str__(self):
         return self.email
 
@@ -26,14 +25,11 @@ class Subject(models.Model):
 #
 class Appointment(models.Model):
     id = models.IntegerField(default='5', blank=True, primary_key=True)
-    # tutor_id = models.IntegerField(default='5', blank=True)
-    # client_id = models.IntegerField(default='5', blank=True)
-    # course_id = models.IntegerField(default='5', blank=True)
     additional_comments = models.CharField(default='blank', blank=True, max_length=200)
     date = models.DateField(("Date"), auto_now_add=True)
     location = models.CharField(default='blank', blank=True, max_length=40)
     status = models.CharField(default='blank', blank=True, max_length=20)
     rating = models.IntegerField(default='5', blank=True)
-    tutor = models.ForeignKey(CustomUser,related_name='TutorAppointments', on_delete=models.CASCADE, null=True)
-    student = models.ForeignKey(CustomUser,related_name='StudentAppointments', on_delete=models.CASCADE, null=True)
-    subject = models.ForeignKey(Subject,related_name='SubjectAppointments', on_delete=models.CASCADE, null=True)
+    tutor = models.ForeignKey(CustomUser,related_name='tutor_appointments', on_delete=models.CASCADE, null=True)
+    student = models.ForeignKey(CustomUser,related_name='student_appointments', on_delete=models.CASCADE, null=True)
+    subject = models.ForeignKey(Subject,related_name='subject_appointments', on_delete=models.CASCADE, null=True)

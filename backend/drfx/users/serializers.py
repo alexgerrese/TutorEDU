@@ -3,16 +3,19 @@ from rest_framework import serializers
 from . import models
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
+    tutor_appointments = serializers.StringRelatedField(many=True)
+    student_appointments = serializers.StringRelatedField(many=True)
     class Meta:
         model = models.CustomUser
         fields = ('id','email', 'username','name',
         'password', 'university','bio', 'client_rating',
-        'is_tutor','is_active', 'tutor_rating','hourly_rate','availabilities')
+        'is_tutor','is_active', 'tutor_rating','hourly_rate','availabilities','tutor_appointments','student_appointments')
 
 class SubjectSerializer(serializers.ModelSerializer):
+    subject_appointments = serializers.StringRelatedField(many=True)
     class Meta:
         model = models.Subject
-        fields = ('id', 'course_name', 'description')
+        fields = ('id', 'course_name', 'description','subject_appointments')
 
 class AppointmentSerializer(serializers.ModelSerializer):
     class Meta:
