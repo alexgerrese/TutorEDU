@@ -17,4 +17,4 @@ class SubjectSerializer(serializers.ModelSerializer):
 class AppointmentSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Appointment
-        fields = ('id', 'tutor_id', 'client_id', 'course_id', 'additional_comments', 'date', 'location', 'status', 'rating')
+        fields = ('id', 'tutor', 'student', 'subject', 'additional_comments', 'date', 'location', 'status', 'rating')
