@@ -6,6 +6,7 @@ from rest_framework import routers
 from . import views
 from django.contrib import admin
 
+# url links sends you to page. -- pk is just regex (specific instance of an object)
 urlpatterns =  [
     # path('', views.api_root),
     path('admin/', admin.site.urls),

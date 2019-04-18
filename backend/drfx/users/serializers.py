@@ -1,7 +1,7 @@
 # users/serializers.py
 from rest_framework import serializers
 from . import models
-
+# parsing data from django models to json format -- uses rest framework
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     tutor_appointments = serializers.StringRelatedField(many=True)
     student_appointments = serializers.StringRelatedField(many=True)

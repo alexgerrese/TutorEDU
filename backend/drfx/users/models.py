@@ -22,7 +22,7 @@ class Subject(models.Model):
     id = models.IntegerField(default='5', blank=True, primary_key=True)
     course_name = models.CharField(default='blank', blank=True, max_length=40)
     description = models.CharField(default='blank', blank=True, max_length=2000)
-#
+
 class Appointment(models.Model):
     id = models.IntegerField(default='5', blank=True, primary_key=True)
     additional_comments = models.CharField(default='blank', blank=True, max_length=200)
