@@ -2,7 +2,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from .models import CustomUser
-
+# we don't really use this.
 class CustomUserCreationForm(UserCreationForm):
 
     class Meta(UserCreationForm):
