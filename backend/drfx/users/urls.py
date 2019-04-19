@@ -7,7 +7,6 @@ from . import views
 from django.contrib import admin
 
 urlpatterns =  [
-    # path('', views.api_root),
     path('admin/', admin.site.urls),
     path('', include('rest_auth.urls')),
     path('',include('django.contrib.auth.urls')),
