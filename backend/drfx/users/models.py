@@ -15,6 +15,8 @@ class CustomUser(AbstractUser):
     tutor_rating = models.IntegerField(default='5', blank=True)
     hourly_rate = models.FloatField(null=True, blank=True, default=None)
     availabilities = models.CharField(default='blank', blank=True, max_length=2000)
+    image = models.ImageField(upload_to='profile_image', blank=True)
+
     def __str__(self):
         return self.email
 
