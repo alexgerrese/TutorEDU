@@ -4,6 +4,8 @@ from rest_framework.urlpatterns import format_suffix_patterns
 from rest_framework import routers
 from . import views
 from django.contrib import admin
+from django.conf import settings
+from django.conf.urls.static import static
 
 # url links sends you to page. -- pk is just regex (specific instance of an object)
 urlpatterns =  [
@@ -17,4 +19,4 @@ urlpatterns =  [
     path('subjects/<int:pk>/', views.SubjectDetail.as_view()),
     path('appointments/', views.AppointmentListView.as_view()),
     path('appointments/<int:pk>/', views.AppointmentDetail.as_view()),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
