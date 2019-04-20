@@ -8,6 +8,9 @@ from django.contrib import admin
 # url links sends you to page. -- pk is just regex (specific instance of an object)
 urlpatterns =  [
     path('admin/', admin.site.urls),
+    path('rest-auth/', include('rest_auth.urls')),
+    path('rest-auth/', include('django.contrib.auth.urls')),
+    path('rest-auth/registration', include('rest_auth.registration.urls')),
     path('users/', views.UserListView.as_view(),name = 'user-list'),
     path('users/<int:pk>/', views.UserDetail.as_view(),name = 'user-detail'),
     path('subjects/', views.SubjectListView.as_view()),
