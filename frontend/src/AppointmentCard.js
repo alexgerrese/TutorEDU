@@ -65,7 +65,6 @@ class AppointmentCard extends Component {
       courseName: "CS342",
       tutorName: "Joe Schmoe",
       hourlyRate: 40,
-      clientName: "Yo Mammababa",
     };
 
   }
@@ -74,9 +73,9 @@ class AppointmentCard extends Component {
   componentDidMount() {
     // getCourseNameFromId(this.props.appointment.course_id)
     this.getTutorFromId(this.props.appointment.tutor)
-    this.getClientNameFromId(this.props.appointment.student)
+    // this.getClientNameFromId(this.props.appointment.student)
     console.log("TUTORID: " + this.props.appointment.tutor)
-    console.log("CLIENTID: " + this.props.appointment.student)
+    // console.log("CLIENTID: " + this.props.appointment.student)
   }
   //
   // getCourseNameFromId(courseId) {
@@ -96,12 +95,12 @@ class AppointmentCard extends Component {
       .catch(err => console.log(err));
   }
 
-  getClientNameFromId(clientId) {
-    axios
-      .get("/users/" + clientId)
-      .then(res => this.setState({ clientName: res.data.name }))
-      .catch(err => console.log(err));
-  }
+  // getClientNameFromId(clientId) {
+  //   axios
+  //     .get("/users/" + clientId)
+  //     .then(res => this.setState({ clientName: res.data.name }))
+  //     .catch(err => console.log(err));
+  // }
 
   render() {
     return (

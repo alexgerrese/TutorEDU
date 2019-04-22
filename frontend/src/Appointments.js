@@ -67,16 +67,7 @@ class Appointments extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      appointments: [{
-        id: 3,
-        tutor: 3,
-        student: 3,
-        course_id: 214,
-        additional_comments: "I'd like extra help on covalent bonds please!",
-        location: "CIEMAS",
-        status: "Completed",
-        rating: null,
-      }],
+      appointments: [],
     };
   }
 
