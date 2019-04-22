@@ -30,3 +30,20 @@ const Button = styled.button`
     resizeMode: contain,
   }
 `;
+
+class SignIn extends Component {
+  render() {
+    return (
+      <div>
+        <p className="schedule-input">Username</p>
+        <input className="text-input-box" id="availabilities" type="text" placeholder="">
+        </input>
+        <p className="schedule-input">Password</p>
+        <input className="text-input-box" id="availabilities" type="password" placeholder="">
+        </input>
+      </div>
+    )
+  }
+}
+
+export default SignIn;
