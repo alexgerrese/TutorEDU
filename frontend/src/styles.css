@@ -313,35 +313,17 @@ h4 {
   text-align: center;
 }
 
-@media screen and (min-width: 1200px) {
-  .tutor-TutorProfile {
-    display: inline-block;
-    /* float: left; */
-    margin-left: 228px;
-  }
-  .tutor-appointment {
-    /* float: left; */
-    /* margin-right: 120px; */
-    margin-left: 40px;
-    display: inline-block;
-  }
+.tutor-TutorProfile {
+  display: inline-block;
+  /* float: left; */
+  /* margin-left: 228px; */
 }
-
-@media screen and (max-width: 1200px) {
-  .tutor-TutorProfile {
-    display: inline-block;
-    float: left;
-    margin-left: 20%;
-  }
-  .tutor-appointment {
-    /* float: left; */
-    /* margin-right: 120px; */
-    margin-left: 40px;
-    display: inline-block;
-  }
+.tutor-appointment {
+  /* float: left; */
+  /* margin-right: 120px; */
+  margin-left: 40px;
+  display: inline-block;
 }
-
-
 
 .tutor-info {
   max-width: 26em;
@@ -363,7 +345,6 @@ h4 {
 .tutor-stats {
   margin-top: 40px;
   margin-right: 24px;
-  /* margin-left: 160px; */
 }
 
 .rating-details {

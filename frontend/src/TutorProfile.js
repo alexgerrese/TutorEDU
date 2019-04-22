@@ -62,7 +62,8 @@ class TutorProfile extends Component {
         reportCard: "Econ 174: A-, Econ 256: A, CS 201: A, CS 230: A-, CS 290: A",
         year: 2020,
         hourly_rate: 40
-      }
+      },
+      courses: []
     };
     this.scheduleAppointment.bind(this);
   }
@@ -71,10 +72,37 @@ class TutorProfile extends Component {
 
     const { match: { params } } = this.props;
 
+    this.getUser(params.userID)
+  }
+
+  getUser(userID) {
     axios
-      .get("/users/" + params.userID)
-      .then(res => this.setState({ user: res.data }))
+      .get("/users/" + userID)
+      .then(res => {
+        this.setState({ user: res.data })
+        this.getCourses(this.state.user.courses) // Once user has been loaded (requirement), retrieve data about courses
+      })
+
       .catch(err => console.log(err));
+  }
+
+  getCourses(courseIDs) {
+
+    for(let courseID of courseIDs) {
+      axios
+        .get("/courses/" + courseID)
+        .then(res => {
+          this.setState(state => {
+            const courses = state.courses.concat(res.data);
+
+            return {
+              courses,
+            };
+
+          });
+        })
+        .catch(err => console.log(err));
+    }
   }
 
   scheduleAppointment() {
@@ -100,7 +128,6 @@ class TutorProfile extends Component {
       .catch(function (error) {
         console.log(error);
       });
-
   }
 
   render() {
@@ -148,13 +175,12 @@ class TutorProfile extends Component {
           <p className="tutor-appointment-main">Schedule an appointment</p>
           <p className="schedule-input">Select a course</p>
           <StyledDropdown>
-            <option value="5">PUBPOL 310</option>
-            <option value="3">COMPSCI 230</option>
-            <option value="1">SPANISH 220</option>
-            <option value="2">COMPSCI 250</option>
+            {this.state.courses.map((course,k) => (
+              <option key={k} value={course.id}>{course.name}</option>
+            ))}
           </StyledDropdown>
-          <p></p>
 
+          <p></p>
           <p className="schedule-input">Enter your availabilities</p>
           <input className="text-input-box" id="availabilities" type="text" placeholder="Friday 10am-2pm...">
           </input>

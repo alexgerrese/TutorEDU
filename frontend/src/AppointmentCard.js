@@ -110,7 +110,7 @@ class AppointmentCard extends Component {
             <img className="appointment-card-profpic" src={"https://randomuser.me/api/portraits/men/" + this.props.appointment.tutor + ".jpg"} alt="Tutor Profile Pic"/>
             <div className="appointment-card-text">
               <h3 className="appointment-card-name">{this.state.tutorName}</h3>
-              <p className="appointment-card-details">{this.state.courseName} • ${this.state.hourlyRate}/HOUR</p>
+              <p className="appointment-card-details">{this.state.courseName} • ${this.state.hourly_rate}/HOUR</p>
             </div>
           </div>
           <div className="appointment-card-right">
