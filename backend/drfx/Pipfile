@@ -10,6 +10,10 @@ django = "*"
 djangorestframework = "*"
 django-rest-auth = "*"
 django-allauth = "*"
+gunicorn = "*"
+django-heroku = "*"
+pillow = "*"
+requests = "*"
 
 [requires]
 python_version = "3.7"
