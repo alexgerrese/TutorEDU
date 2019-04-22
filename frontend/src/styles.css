@@ -65,6 +65,7 @@ h4 {
 /* TUTOR CARD COMPONENT */
 .tutor-card {
   display: inline-block;
+  vertical-align: top;
   overflow: hidden;
   width: 300px;
   border-radius: 8px;

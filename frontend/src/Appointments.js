@@ -69,8 +69,8 @@ class Appointments extends Component {
     this.state = {
       appointments: [{
         id: 3,
-        tutor_id: 3,
-        client_id: 3,
+        tutor: 3,
+        student: 3,
         course_id: 214,
         additional_comments: "I'd like extra help on covalent bonds please!",
         location: "CIEMAS",
@@ -85,7 +85,7 @@ class Appointments extends Component {
     const { match: { params } } = this.props;
 
     axios
-      .get("/api/users/")
+      .get("/appointments/")
       .then(res => this.setState({ appointments: res.data }))
       .catch(err => console.log(err));
   }
