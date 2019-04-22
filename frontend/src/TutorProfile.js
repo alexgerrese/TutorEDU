@@ -72,7 +72,7 @@ class TutorProfile extends Component {
     const { match: { params } } = this.props;
 
     axios
-      .get("/user/" + params.userID)
+      .get("/users/" + params.userID)
       .then(res => this.setState({ user: res.data }))
       .catch(err => console.log(err));
   }
@@ -81,8 +81,8 @@ class TutorProfile extends Component {
 
     var appointment = {
       id: Math.floor(Math.random() * 100000),
-      tutor_id: this.state.user.id,
-      client_id: this.state.user.id,
+      tutor: this.state.user.id,
+      student: this.state.user.id,
       course_id: 5,
       additional_comments: document.getElementById('description').value,
       date: document.getElementById('availabilities').value,
@@ -93,7 +93,7 @@ class TutorProfile extends Component {
 
     console.log(appointment);
 
-    axios.post('/api/users/', appointment)
+    axios.post('/appointments/', appointment)
       .then(function (response) {
         console.log(response);
       })
