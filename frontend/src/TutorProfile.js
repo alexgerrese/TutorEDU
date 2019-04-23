@@ -63,7 +63,10 @@ class TutorProfile extends Component {
         year: 2020,
         hourly_rate: 40
       },
-      courses: []
+      subjects: [{
+        id: 1,
+        name: "CS220"
+      }]
     };
     this.scheduleAppointment.bind(this);
   }
@@ -80,23 +83,23 @@ class TutorProfile extends Component {
       .get("/users/" + userID)
       .then(res => {
         this.setState({ user: res.data })
-        this.getCourses(this.state.user.courses) // Once user has been loaded (requirement), retrieve data about courses
+        this.getCourses(this.state.user.subjects) // Once user has been loaded (requirement), retrieve data about courses
       })
 
       .catch(err => console.log(err));
   }
 
-  getCourses(courseIDs) {
+  getCourses(subjectIDs) {
 
-    for(let courseID of courseIDs) {
+    for(let subjectID of subjectIDs) {
       axios
-        .get("/courses/" + courseID)
+        .get("/subjects/" + subjectID)
         .then(res => {
           this.setState(state => {
-            const courses = state.courses.concat(res.data);
+            const subjects = state.courses.concat(res.data);
 
             return {
-              courses,
+              subjects,
             };
 
           });
@@ -175,8 +178,8 @@ class TutorProfile extends Component {
           <p className="tutor-appointment-main">Schedule an appointment</p>
           <p className="schedule-input">Select a course</p>
           <StyledDropdown>
-            {this.state.courses.map((course,k) => (
-              <option key={k} value={course.id}>{course.name}</option>
+            {this.state.subjects.map((subject,k) => (
+              <option key={k} value={subject.id}>{subject.name}</option>
             ))}
           </StyledDropdown>
 

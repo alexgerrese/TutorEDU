@@ -59,7 +59,7 @@ class SignIn extends Component {
   }
 
   componentDidMount() {
-    if (this.state.logged_in) {
+    if (this.state.isLoggedIn) {
 
     }
   }
@@ -73,28 +73,15 @@ class SignIn extends Component {
 
     axios.post('/rest-auth/login/', credentials)
       .then(function (response) {
-        console.log(response);
+        console.log(response.key);
+        localStorage.setItem('token', response.key);
+        this.setState({
+            isLoggedIn: true,
+          });
       })
       .catch(function (error) {
         console.log(error);
       });
-    //
-    // fetch('http://localhost:8000/token-auth/', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify(data)
-    // })
-    //   .then(res => res.json())
-    //   .then(json => {
-    //     localStorage.setItem('token', json.token);
-    //     this.setState({
-    //       logged_in: true,
-    //       displayed_form: '',
-    //       username: json.user.username
-    //     });
-    //   });
   }
 
   render() {
