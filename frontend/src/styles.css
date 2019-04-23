@@ -1,7 +1,14 @@
 /* UNIVERSAL STYLES */
 
+html {
+  height: 100%;
+  min-height:100%;
+}
+
 body {
   padding-top: 40px;
+  height: 100%;
+  min-height:100%;
 }
 
 h1 {
@@ -410,4 +417,61 @@ h4 {
 
 .navbar-appointments {
   padding-right: 16px;
+}
+
+/* Sign In/ Sign Up Flows */
+
+.signin {
+  height: 100vh;
+  position: relative;
+}
+
+.signin-left {
+  width: 45%;
+  height: 100%;
+  float: left;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.signin-background {
+  /* margin-left: -750px; */
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.signin-right {
+  display: inline-block;
+  margin-left: 60px;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.signin-input {
+  font-family: Avenir-Heavy;
+  letter-spacing: 0px;
+  font-size: 12px;
+  margin-bottom: 8px;
+  margin-top: 20px;
+}
+
+.signin-input-box {
+  height: 40px;
+  width: 440px;
+  border: 1px solid #ECECEC;
+  border-radius: 4px;
+  background-color: #F8F8F8;
+  font-family: Avenir-Heavy;
+  font-size: 12px;
+  letter-spacing: 0;
+  padding-left: 12px;
+}
+
+.signin-title {
+  font-family: Avenir-Black;
+  font-size: 28px;
+  padding-bottom: 20px;
 }

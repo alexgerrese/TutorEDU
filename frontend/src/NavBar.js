@@ -4,9 +4,20 @@ import { Navbar, Nav, NavItem } from 'react-bootstrap';
 class NavBar extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      isLoggedIn: localStorage.getItem('token') ? true : false,
+      name: ""
+    };
+  }
+
+  componentDidMount() {
+    if (this.state.isLoggedIn) {
+
+    }
   }
 
   render() {
+    const isLoggedIn = this.state.isLoggedIn;
     return  (
         <div className="navbar">
           <Navbar className="bg-light justify-content-between" expand="lg" fixed="top">
@@ -16,9 +27,15 @@ class NavBar extends Component {
               <Navbar.Text className="navbar-appointments">
                 <a href="/appointments">Appointments</a>
               </Navbar.Text>
-              <Navbar.Text>
-                Signed in as: <a href="#login">Alex Gerrese</a>
-              </Navbar.Text>
+              {isLoggedIn ? (
+                <Navbar.Text>
+                  Signed in as: <a href="signin">Alex Gerrese</a>
+                </Navbar.Text>
+              ) : (
+                <Navbar.Text>
+                  <a href="signin">Sign up/Sign in</a>
+                </Navbar.Text>
+              )}
             </Navbar.Collapse>
           </Navbar>
         </div>

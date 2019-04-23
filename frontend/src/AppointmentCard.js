@@ -95,13 +95,6 @@ class AppointmentCard extends Component {
       .catch(err => console.log(err));
   }
 
-  // getClientNameFromId(clientId) {
-  //   axios
-  //     .get("/users/" + clientId)
-  //     .then(res => this.setState({ clientName: res.data.name }))
-  //     .catch(err => console.log(err));
-  // }
-
   render() {
     return (
       <div className="appointment-card-container">
