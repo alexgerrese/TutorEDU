@@ -9,13 +9,18 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         model = models.CustomUser
         fields = ('id','email', 'username','name',
         'password', 'university','bio', 'client_rating',
-        'is_tutor','is_active', 'tutor_rating','hourly_rate','availabilities','image','tutor_appointments','student_appointments')
+<<<<<<< HEAD
+        'is_tutor','is_active', 'tutor_rating','hourly_rate','availabilities','image','tutor_appointments','student_appointments' )
+=======
+        'is_tutor','is_active', 'tutor_rating','hourly_rate','availabilities','image','tutor_appointments','student_appointments','subjects')
+>>>>>>> 2b7ae34ed87d7c3c4b9743318a7fb0cf476a340d
 
 class SubjectSerializer(serializers.ModelSerializer):
     subject_appointments = serializers.StringRelatedField(many=True)
+    user_subjects = serializers.StringRelatedField(many=True)
     class Meta:
         model = models.Subject
-        fields = ('id', 'course_name', 'description','subject_appointments')
+        fields = ('id', 'course_name', 'description','subject_appointments','user_subjects')
 
 class AppointmentSerializer(serializers.ModelSerializer):
     class Meta:
