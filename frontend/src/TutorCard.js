@@ -31,6 +31,8 @@ class TutorCard extends Component {
                 className="tutor-profpic" />
           <h3 className="tutor-name">{this.props.user.name}</h3>
           <p className="paragraph">{this.props.user.bio}</p>
+          <h4 className="tutor-availabilities">SUBJECTS</h4>
+          <p className="paragraph">{this.props.user.subjects}</p>
           <h4 className="tutor-availabilities">AVAILABILITIES</h4>
           <p className="paragraph">{this.props.user.availabilities}</p>
             <Link to={{ pathname: "/tutors/" + this.props.user.id }}>

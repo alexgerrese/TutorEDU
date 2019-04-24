@@ -24,6 +24,7 @@ class Collection extends Component {
     return  (
       <div className="app">
         <div className="collection">
+          <h2 className="upcoming-appointments-text">Browse Tutors</h2>
             {this.state.users.map((user,k) => (
               <TutorCard  key={k}
                           user={user}/>
