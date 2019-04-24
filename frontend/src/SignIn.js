@@ -53,9 +53,11 @@ class SignIn extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      logged_in: localStorage.getItem('token') ? true : false,
+      isLoggedIn: localStorage.getItem('token') ? true : false,
       username: ''
     };
+
+    this.handleLogin = this.handleLogin.bind(this);
   }
 
   componentDidMount() {
@@ -72,37 +74,58 @@ class SignIn extends Component {
     }
 
     axios.post('/rest-auth/login/', credentials)
-      .then(function (response) {
-        console.log(response.key);
-        localStorage.setItem('token', response.key);
-        this.setState({
-            isLoggedIn: true,
-          });
+      .then((response) => {
+        console.log(response.data.key);
+        if (response.data.key != undefined) {
+          localStorage.setItem('token', response.data.key);
+          this.setState({
+              isLoggedIn: true,
+            });
+        }
       })
       .catch(function (error) {
         console.log(error);
       });
   }
 
+  handleLogout() {
+    localStorage.removeItem('token');
+    this.setState({ isLoggedIn: false });
+    window.location.reload();
+  }
+
   render() {
+
+    const signInView =
+      <div className="signin-right">
+        <h2 className="signin-title">Sign in</h2>
+        <p className="signin-input">Username</p>
+        <input className="signin-input-box" id="username" type="text" placeholder="">
+        </input>
+        <p className="signin-input">Password</p>
+        <input className="signin-input-box" id="password" type="password" placeholder="">
+        </input>
+        <div>
+          <PrimaryButton onClick={() => {this.handleLogin()}}>Sign In</PrimaryButton>
+          <SecondaryButton>Sign Up</SecondaryButton>
+        </div>
+      </div>
+
+    const signOutView =
+      <div className="signin-right">
+        <h2 className="signin-title">Are you sure you want to log out?</h2>
+        <div>
+          <PrimaryButton onClick={() => {this.handleLogout()}}>Logout</PrimaryButton>
+        </div>
+      </div>
+
+
     return (
       <div className="signin">
         <div className="signin-left">
           <img className="signin-background" src={background} alt="Duke University campus"/>
         </div>
-        <div className="signin-right">
-          <h2 className="signin-title">Sign in</h2>
-          <p className="signin-input">Username</p>
-          <input className="signin-input-box" id="username" type="text" placeholder="">
-          </input>
-          <p className="signin-input">Password</p>
-          <input className="signin-input-box" id="password" type="password" placeholder="">
-          </input>
-          <div>
-            <PrimaryButton onClick={() => {this.handleLogin()}}>Sign In</PrimaryButton>
-            <SecondaryButton>Sign Up</SecondaryButton>
-          </div>
-        </div>
+        {this.state.isLoggedIn ? signOutView : signInView}
       </div>
     )
   }

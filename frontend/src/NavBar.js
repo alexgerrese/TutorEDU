@@ -29,11 +29,11 @@ class NavBar extends Component {
               </Navbar.Text>
               {isLoggedIn ? (
                 <Navbar.Text>
-                  Signed in as: <a href="signin">Alex Gerrese</a>
+                  Signed in as: <a href="/signin">Alex Gerrese</a>
                 </Navbar.Text>
               ) : (
                 <Navbar.Text>
-                  <a href="signin">Sign up/Sign in</a>
+                  <a href="/signin">Sign up/Sign in</a>
                 </Navbar.Text>
               )}
             </Navbar.Collapse>

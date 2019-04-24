@@ -194,7 +194,7 @@ class TutorProfile extends Component {
           </input>
           <p></p>
           <Link to={{ pathname: "/appointments/" }}>
-            <Button class="submit-request" onClick={() => {this.scheduleAppointment()}}>Submit Request</Button>
+            <Button className="submit-request" onClick={() => {this.scheduleAppointment()}}>Submit Request</Button>
           </Link>
           <p></p>
           <p>We will get back to you within 24 hours.</p>
