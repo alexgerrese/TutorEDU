@@ -107,7 +107,9 @@ class SignIn extends Component {
         </input>
         <div>
           <PrimaryButton onClick={() => {this.handleLogin()}}>Sign In</PrimaryButton>
-          <SecondaryButton>Sign Up</SecondaryButton>
+          <Link to={{ pathname: "/signup/" }}>
+            <SecondaryButton>Sign Up</SecondaryButton>
+          </Link>
         </div>
       </div>
 

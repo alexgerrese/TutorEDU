@@ -464,8 +464,8 @@ h4 {
   border: 1px solid #ECECEC;
   border-radius: 4px;
   background-color: #F8F8F8;
-  font-family: Avenir-Heavy;
-  font-size: 12px;
+  font-family: Avenir-Medium;
+  font-size: 14px;
   letter-spacing: 0;
   padding-left: 12px;
 }
@@ -474,4 +474,41 @@ h4 {
   font-family: Avenir-Black;
   font-size: 28px;
   padding-bottom: 20px;
+}
+
+.signup-tutor-label {
+  font-family: Avenir-Medium;
+  font-size: 14px;
+  margin-bottom: 8px;
+  margin-top: 20px;
+}
+
+.signup-checkbox {
+  margin-right: 8px;
+  border: 1px solid #ECECEC;
+}
+
+.bio-input-box {
+  height: 100px;
+  width: 440px;
+  border: 1px solid #ECECEC;
+  border-radius: 4px;
+  background-color: #F8F8F8;
+  font-family: Avenir-Medium;
+  font-size: 14px;
+  letter-spacing: 0;
+  padding: 12px;
+
+}
+
+.hourlyRate-input-box {
+  height: 40px;
+  width: 120px;
+  border: 1px solid #ECECEC;
+  border-radius: 4px;
+  background-color: #F8F8F8;
+  font-family: Avenir-Medium;
+  font-size: 14px;
+  letter-spacing: 0;
+  padding-left: 12px;
 }
