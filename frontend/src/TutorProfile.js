@@ -66,7 +66,8 @@ class TutorProfile extends Component {
       subjects: [{
         id: 1,
         name: "CS220"
-      }]
+      }],
+      isLoggedIn: localStorage.getItem('token') ? true : false,
     };
     this.scheduleAppointment.bind(this);
   }
@@ -193,11 +194,17 @@ class TutorProfile extends Component {
           <input className="text-input-box" id="description" type="text" placeholder="Midterm test prep on integrals...">
           </input>
           <p></p>
-          <Link to={{ pathname: "/appointments/" }}>
-            <Button className="submit-request" onClick={() => {this.scheduleAppointment()}}>Submit Request</Button>
-          </Link>
-          <p></p>
-          <p>We will get back to you within 24 hours.</p>
+          {this.state.isLoggedIn ? (
+            <div>
+              <Link to={{ pathname: "/appointments/" }}>
+                <Button className="submit-request" onClick={() => {this.scheduleAppointment()}}>Submit Request</Button>
+              </Link>
+              <p></p>
+              <p className="availability-details">We will get back to you within 24 hours.</p>
+            </div>
+          ) : (
+            <p style={{ textAlign: "center" }} className="availability-details"><br/>Please sign in to schedule an appointment.</p>
+          )}
         </div>
       </div>
     )
