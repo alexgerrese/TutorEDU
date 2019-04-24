@@ -5,11 +5,13 @@ from . import models
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     tutor_appointments = serializers.StringRelatedField(many=True)
     student_appointments = serializers.StringRelatedField(many=True)
+    subjects = serializers.StringRelatedField(many=True)
+
     class Meta:
         model = models.CustomUser
         fields = ('id','email', 'username','name',
         'password', 'university','bio', 'client_rating',
-        'is_tutor','is_active', 'tutor_rating','hourly_rate','availabilities','image','tutor_appointments','student_appointments')
+        'is_tutor','is_active', 'tutor_rating','hourly_rate','availabilities','image','tutor_appointments','student_appointments','subjects')
 
 class SubjectSerializer(serializers.ModelSerializer):
     subject_appointments = serializers.StringRelatedField(many=True)
