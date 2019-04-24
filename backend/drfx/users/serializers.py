@@ -12,6 +12,8 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('id','email', 'username','name',
         'password', 'university','bio', 'client_rating',
         'is_tutor','is_active', 'tutor_rating','hourly_rate','availabilities','image','tutor_appointments','student_appointments','subjects')
+        write_only_fields = ('password',)
+        read_only_fields = ('id',)
 
 class SubjectSerializer(serializers.ModelSerializer):
     subject_appointments = serializers.StringRelatedField(many=True)
