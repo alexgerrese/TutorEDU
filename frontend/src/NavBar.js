@@ -1,19 +1,35 @@
 import React, { Component } from 'react';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
+import axios from "axios";
 
 class NavBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
       isLoggedIn: localStorage.getItem('token') ? true : false,
-      name: ""
+      user: null
     };
   }
 
   componentDidMount() {
     if (this.state.isLoggedIn) {
-
+      this.getCurrentUser()
     }
+  }
+
+  getCurrentUser() {
+    var config = {
+      headers: {'Authorization': `JWT ${localStorage.getItem('token')}`}
+    };
+
+    axios
+      .get('/current_user', config)
+      .then(res => {
+        this.setState({
+          user: res.data,
+        })
+        console.log(res);
+      })
   }
 
   render() {
@@ -29,7 +45,7 @@ class NavBar extends Component {
               </Navbar.Text>
               {isLoggedIn ? (
                 <Navbar.Text>
-                  Signed in as: <a href="/signin">Alex Gerrese</a>
+                  Signed in as: <a href="/signin">{ this.state.user != null ? this.state.user.name : "Loading..."}</a>
                 </Navbar.Text>
               ) : (
                 <Navbar.Text>

@@ -56,7 +56,6 @@ class SignUp extends Component {
       isTutor: false,
     };
 
-    // this.handleSignup = this.handleSignup.bind(this);
     this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
   }
 

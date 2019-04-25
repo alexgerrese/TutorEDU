@@ -30,44 +30,13 @@ const Button = styled.button`
   }
 `;
 
-// const appointments = [{
-//   id: 1,
-//   tutor_id: 2,
-//   client_id: 3,
-//   course_id: 214,
-//   additional_comments: "I'd like extra help on covalent bonds please!",
-//   location: "Perkins 1st floor",
-//   status: "Waiting for response",
-//   rating: null,
-// },
-// {
-//   id: 2,
-//   tutor_id: 2,
-//   client_id: 1,
-//   course_id: 222,
-//   additional_comments: "I'd like extra help on math concepts ya kno.",
-//   location: "Bostock 4th floor",
-//   status: "Confirmed",
-//   rating: null,
-// },
-// {
-//   id: 3,
-//   tutor_id: 2,
-//   client_id: 3,
-//   course_id: 214,
-//   additional_comments: "I'd like extra help on covalent bonds please!",
-//   location: "CIEMAS",
-//   status: "Completed",
-//   rating: null,
-// },
-// ]
-
 class Appointments extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
       appointments: [],
+      user: null,
     };
   }
 
@@ -75,8 +44,29 @@ class Appointments extends Component {
 
     const { match: { params } } = this.props;
 
+    this.getCurrentUser()
+
+  }
+
+  getCurrentUser() {
+    var config = {
+      headers: {'Authorization': `JWT ${localStorage.getItem('token')}`}
+    };
+
     axios
-      .get("/appointments/")
+      .get('/current_user', config)
+      .then(res => {
+        console.log(res);
+        this.setState({
+          user: res.data,
+        })
+        this.getAppointments(this.state.user.id)
+      })
+  }
+
+  getAppointments(userID) {
+    axios
+      .get("/appointments/", userID)
       .then(res => this.setState({ appointments: res.data }))
       .catch(err => console.log(err));
   }

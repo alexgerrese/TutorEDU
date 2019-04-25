@@ -23,10 +23,11 @@ const Button = styled.button`
 `;
 
 class TutorCard extends Component {
+
   render() {
     return (
         <div className="tutor-card">
-          <img  src={ "https://randomuser.me/api/portraits/men/" + this.props.user.id + ".jpg" }
+          <img  src={ this.props.user.image }
                 alt={ "TUTOR NAME" }
                 className="tutor-profpic" />
           <h3 className="tutor-name">{this.props.user.name}</h3>

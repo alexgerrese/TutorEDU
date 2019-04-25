@@ -50,7 +50,8 @@ class TutorProfile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: {
+      user: null,
+      tutor: {
         id: -1,
         name: "Alex Gerrese",
         profpicURL: "https://randomuser.me/api/portraits/men/4.jpg",
@@ -76,15 +77,31 @@ class TutorProfile extends Component {
 
     const { match: { params } } = this.props;
 
-    this.getUser(params.userID)
+    this.getTutor(params.userID)
+    this.getCurrentUser()
   }
 
-  getUser(userID) {
+  getCurrentUser() {
+    var config = {
+      headers: {'Authorization': `JWT ${localStorage.getItem('token')}`}
+    };
+
+    axios
+      .get('/current_user', config)
+      .then(res => {
+        this.setState({
+          user: res.data,
+        })
+        console.log(res);
+      })
+  }
+
+  getTutor(userID) {
     axios
       .get("/users/" + userID)
       .then(res => {
-        this.setState({ user: res.data })
-        this.getCourses(this.state.user.subjects) // Once user has been loaded (requirement), retrieve data about courses
+        this.setState({ tutor: res.data })
+        this.getCourses(this.state.tutor.subjects) // Once user has been loaded (requirement), retrieve data about courses
       })
 
       .catch(err => console.log(err));
@@ -113,7 +130,7 @@ class TutorProfile extends Component {
 
     var appointment = {
       id: Math.floor(Math.random() * 100000),
-      tutor: this.state.user.id,
+      tutor: this.state.tutor.id,
       student: this.state.user.id,
       course_id: 5,
       additional_comments: document.getElementById('description').value,
@@ -140,15 +157,15 @@ class TutorProfile extends Component {
         <div className="tutor-TutorProfile">
           <div className="tutor-topHeader">
             <div className="tutor-picture">
-            <img  src={ "https://randomuser.me/api/portraits/men/" + this.state.user.id + ".jpg" }
-                  alt={ console.log(this.state.user) }
+            <img  src={ this.state.tutor.image }
+                  alt={ this.state.tutor.name }
                   className="tutor-profpicture"/>
             </div>
             <p></p>
             <div className="tutor-info">
-            <h3 className="tutor-schoolYearAndRate">{this.state.user.university.toUpperCase()} • SENIOR • ${this.state.user.hourly_rate}/HOUR</h3>
-            <h1 className="tutor-named">{this.state.user.name}</h1>
-            <p className="tutor-description">{this.state.user.bio}</p>
+            <h3 className="tutor-schoolYearAndRate">{this.state.tutor.university.toUpperCase()} • SENIOR • ${this.state.tutor.hourly_rate}/HOUR</h3>
+            <h1 className="tutor-named">{this.state.tutor.name}</h1>
+            <p className="tutor-description">{this.state.tutor.bio}</p>
             </div>
           </div>
           <div className="tutor-stats">
@@ -156,7 +173,7 @@ class TutorProfile extends Component {
               <p></p>
               <h4 className="tutor-rating">RATING</h4>
               <p className="rating-details">
-              {this.state.user.tutor_rating}/5 stars</p>
+              {this.state.tutor.tutor_rating}/5 stars</p>
             </div>
             <div className="tutor-classes">
               <h4 className="tutor-classes">CLASSES</h4>
@@ -166,7 +183,7 @@ class TutorProfile extends Component {
             <div className="tutor-availability">
               <h4 className="tutor-availability">AVAILABILITIES</h4>
               <p className="availability-details">
-              {this.state.user.availabilities}</p>
+              {this.state.tutor.availabilities}</p>
             </div>
             <div className="tutor-reportCard">
               <h4 className="tutor-reportCard">REPORT CARD</h4>

@@ -75,7 +75,7 @@ class SignIn extends Component {
 
     axios.post('/rest-auth/login/', credentials)
       .then((response) => {
-        console.log(response.data.key);
+        console.log(response);
         if (response.data.key != undefined) {
           localStorage.setItem('token', response.data.key);
           this.setState({
