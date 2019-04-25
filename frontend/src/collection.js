@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import TutorCard from './TutorCard';
-import TutorProfile from './TutorProfile';
-import NavBar from './NavBar';
-import { Link } from 'react-router-dom';
 import axios from "axios";
 
 class Collection extends Component {

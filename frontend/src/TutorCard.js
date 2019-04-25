@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './styles.css';
 import styled from 'styled-components';
-import TutorProfile from './TutorProfile';
 import { Link } from "react-router-dom";
 
 const Button = styled.button`

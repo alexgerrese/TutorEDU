@@ -132,7 +132,7 @@ class TutorProfile extends Component {
       id: Math.floor(Math.random() * 100000),
       tutor: this.state.tutor.id,
       student: this.state.user.id,
-      course_id: 5,
+      subject: 5,
       additional_comments: document.getElementById('description').value,
       date: document.getElementById('availabilities').value,
       location: "blank",
@@ -208,8 +208,7 @@ class TutorProfile extends Component {
           <p></p>
 
           <p className="schedule-input">Briefly describe the kind of help you need</p>
-          <input className="text-input-box" id="description" type="text" placeholder="Midterm test prep on integrals...">
-          </input>
+          <textarea className="textarea-input-box" id="description" type="text" placeholder="Midterm test prep on integrals..."></textarea>
           <p></p>
           {this.state.isLoggedIn ? (
             <div>

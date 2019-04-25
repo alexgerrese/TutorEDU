@@ -1,34 +1,7 @@
 import React, { Component } from 'react';
 import './styles.css';
-import styled from 'styled-components';
 import AppointmentCard from './AppointmentCard';
 import axios from "axios";
-
-const Button = styled.button`
-  height: 40px;
-  width: 230px;
-  border: 2px solid #D9E2FF;
-  border-radius: 4px;
-  font-family: Avenir-Heavy;
-  font-size: 12px;
-  color: #1C3A9F;
-  letter-spacing: 0;
-  text-align: center;
-  justifyContent: center;
-  alignItems: center;
-
-  :hover {
-    color: white;
-    border: 0px;
-    background-color: #1C3A9F;
-  }
-
-  :image {
-    flex: 1,
-    aspectRatio: 1.5,
-    resizeMode: contain,
-  }
-`;
 
 class Appointments extends Component {
 
@@ -41,11 +14,7 @@ class Appointments extends Component {
   }
 
   componentDidMount() {
-
-    const { match: { params } } = this.props;
-
     this.getCurrentUser()
-
   }
 
   getCurrentUser() {
@@ -76,10 +45,14 @@ class Appointments extends Component {
       <div className="appointments-container">
         <div className="upcoming-appointments">
           <h2 className="upcoming-appointments-text">Upcoming Appointments</h2>
-          {this.state.appointments.map((appointment,k) => (
-            <AppointmentCard  key={k}
-                              appointment={appointment}/>
-          ))}
+          {this.state.appointments.length > 0 ? (
+            this.state.appointments.map((appointment,k) => (
+              <AppointmentCard  key={k}
+                                appointment={appointment}/>
+            ))
+          ) : (
+            <p className="tutor-results">No upcoming appointments</p>
+          )}
         </div>
         <div className="past-appointments">
           <h2 className="past-appointments-text">Past Appointments</h2>

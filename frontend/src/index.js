@@ -7,7 +7,7 @@ import TutorProfile from './TutorProfile';
 import Appointments from './Appointments';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from "axios";

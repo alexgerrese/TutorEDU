@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Navbar, Nav, NavItem } from 'react-bootstrap';
+import { Navbar } from 'react-bootstrap';
 import axios from "axios";
 
 class NavBar extends Component {
@@ -44,9 +44,10 @@ class NavBar extends Component {
                 <a href="/appointments">Appointments</a>
               </Navbar.Text>
               {isLoggedIn ? (
-                <Navbar.Text>
-                  Signed in as: <a href="/signin">{ this.state.user != null ? this.state.user.name : "Loading..."}</a>
-                </Navbar.Text>
+                <div>
+                  <a href="/signin"><img className="navbar-profpic" src={ this.state.user != null ? this.state.user.image : null } alt=""/>
+                  </a>
+                </div>
               ) : (
                 <Navbar.Text>
                   <a href="/signin">Sign up/Sign in</a>

@@ -60,12 +60,6 @@ class SignIn extends Component {
     this.handleLogin = this.handleLogin.bind(this);
   }
 
-  componentDidMount() {
-    if (this.state.isLoggedIn) {
-
-    }
-  }
-
   handleLogin() {
 
     const credentials = {
@@ -76,11 +70,12 @@ class SignIn extends Component {
     axios.post('/rest-auth/login/', credentials)
       .then((response) => {
         console.log(response);
-        if (response.data.key != undefined) {
+        if (response.data.key !== undefined) {
           localStorage.setItem('token', response.data.key);
           this.setState({
               isLoggedIn: true,
             });
+            window.location.reload();
         }
       })
       .catch(function (error) {
@@ -120,7 +115,6 @@ class SignIn extends Component {
           <PrimaryButton onClick={() => {this.handleLogout()}}>Logout</PrimaryButton>
         </div>
       </div>
-
 
     return (
       <div className="signin">

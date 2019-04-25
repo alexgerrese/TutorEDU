@@ -62,35 +62,30 @@ class AppointmentCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      courseName: "CS342",
-      tutorName: "Joe Schmoe",
-      hourlyRate: 40,
+      tutor: null,
+      appointment: this.props.appointment,
+      subjectName: "",
     };
 
   }
 
-// TODO: UNCOMMENT WHEN API IS READY
   componentDidMount() {
-    // getCourseNameFromId(this.props.appointment.course_id)
-    this.getTutorFromId(this.props.appointment.tutor)
-    // this.getClientNameFromId(this.props.appointment.student)
-    console.log("TUTORID: " + this.props.appointment.tutor)
-    // console.log("CLIENTID: " + this.props.appointment.student)
+    this.getSubjectNameFromId(this.props.appointment.subject)
+    this.getTutorFromId(this.state.appointment.tutor)
   }
-  //
-  // getCourseNameFromId(courseId) {
-  //   axios
-  //     .get("/api/v1/courses/" + courseId)
-  //     .then(res => this.setState({ courseName: res.data.name }))
-  //     .catch(err => console.log(err));
-  // }
-  //
+
+  getSubjectNameFromId(subjectID) {
+    axios
+      .get("/subjects/" + subjectID)
+      .then(res => this.setState({ subjectName: res.data.course_name }))
+      .catch(err => console.log(err));
+  }
+
   getTutorFromId(tutorId) {
     axios
       .get("/users/" + tutorId)
       .then(res => {
-        this.setState({ tutorName: res.data.name })
-        this.setState({ hourlyRate: res.data.hourly_rate })
+        this.setState({ tutor: res.data })
       })
       .catch(err => console.log(err));
   }
@@ -100,10 +95,10 @@ class AppointmentCard extends Component {
       <div className="appointment-card-container">
         <div className="appointment-card-card">
           <div className="appointment-card-left">
-            <img className="appointment-card-profpic" src={"https://randomuser.me/api/portraits/men/" + this.props.appointment.tutor + ".jpg"} alt="Tutor Profile Pic"/>
+            <img className="appointment-card-profpic" src={ this.state.tutor != null ? this.state.tutor.image : null } alt="Tutor Profile Pic"/>
             <div className="appointment-card-text">
-              <h3 className="appointment-card-name">{this.state.tutorName}</h3>
-              <p className="appointment-card-details">{this.state.courseName} • ${this.state.hourly_rate}/HOUR</p>
+              <h3 className="appointment-card-name">{ this.state.tutor != null ? this.state.tutor.name : "Loading..." }</h3>
+              <p className="appointment-card-details">{ this.state.subjectName } • ${ this.state.tutor != null ? this.state.tutor.hourly_rate : "" }/HOUR</p>
             </div>
           </div>
           <div className="appointment-card-right">
