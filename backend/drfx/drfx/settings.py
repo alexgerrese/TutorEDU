@@ -133,5 +133,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'users/media')
 AUTH_USER_MODEL = 'users.CustomUser'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 SITE_ID = 1
+JWT_AUTH = {
+    'JWT_RESPONSE_PAYLOAD_HANDLER': 'drfx.utils.my_jwt_response_handler'
+}
 # django_heroku.settings(locals())
 # TEST_RUNNER = 'django_heroku.HerokuDiscoverRunner'

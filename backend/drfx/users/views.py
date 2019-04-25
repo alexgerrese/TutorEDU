@@ -2,9 +2,20 @@
 from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework.decorators import api_view
 from django.http import Http404
 from . import models
 from . import serializers
+
+@api_view(['GET'])
+def current_user(request):
+    """
+    Determine the current user by their token, and return their data
+    """
+
+    serializer = serializers.UserSerializer(request.user)
+    return Response(serializer.data)
+
 # receivin
 class UserListView(APIView): #for users page
 # displaying models from backend
