@@ -26,76 +26,19 @@ class UserDetail(generics.RetrieveUpdateDestroyAPIView): #for a single user
     queryset = models.CustomUser.objects.all()
     serializer_class = serializers.UserSerializer
 
-class SubjectListView(APIView):
+class SubjectListView(generics.ListCreateAPIView):
 # same as above but for subjects
-    def get(self, request, format=None):
-        subjects = models.Subject.objects.all()
-        serializer = serializers.SubjectSerializer(subjects,many=True)
-        return Response(serializer.data)
-# same as above but for subjects
-    def post(self, request, format=None):
-        serializer = serializers.SubjectSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    queryset = models.Subject.objects.all()
+    serializer_class = serializers.SubjectSerializer
 
-class SubjectDetail(APIView):
-# same thing as above but for a single subject
-    def get_object(self, pk):
-        try:
-            return models.Subject.objects.get(pk=pk)
-        except models.Subject.DoesNotExist:
-            raise Http404
-# same thing as above but for a single subject
-    def get(self, request, pk, format=None):
-        subject = self.get_object(pk)
-        serializer = serializers.SubjectSerializer(subject)
-        return Response(serializer.data)
-# same thing as above but for a single subject
-    def put(self, request, pk, format=None):
-        subject = self.get_object(pk)
-        serializer = serializers.SubjectSerializer(subject)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+class SubjectDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = models.Subject.objects.all()
+    serializer_class = serializers.SubjectSerializer
 
-# same above but for appointments
-class AppointmentListView(APIView):
-    def get(self, request, format=None):
-        appointments = models.Appointment.objects.all()
-        serializer = serializers.AppointmentSerializer(appointments,many=True)
-        return Response(serializer.data)
+class AppointmentListView(generics.ListCreateAPIView):
+    queryset = models.Appointment.objects.all()
+    serializer_class = serializers.AppointmentSerializer
 
-    def post(self, request, format=None):
-        serializer = serializers.AppointmentSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-# same as above but for single appointments
-class AppointmentDetail(APIView):
-    def get_object(self, pk):
-        try:
-            return models.Appointment.objects.get(pk=pk)
-        except models.Appointment.DoesNotExist:
-            raise Http404
-
-    def get(self, request, pk, format=None):
-        appointment = self.get_object(pk)
-        serializer = serializers.AppointmentSerializer(appointment)
-        return Response(serializer.data)
-
-    def put(self, request, pk, format=None):
-        appointment = self.get_object(pk)
-        serializer = serializers.AppointmentSerializer(appointment, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    def delete(self, request, pk, format=None):
-        appointment = self.get_object(pk)
-        appointment.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+class AppointmentDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = models.Appointment.objects.all()
+    serializer_class = serializers.AppointmentSerializer
