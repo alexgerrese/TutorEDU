@@ -64,11 +64,9 @@ class TutorProfile extends Component {
         year: 2020,
         hourly_rate: 40
       },
-      subjects: [{
-        id: 1,
-        name: "CS220"
-      }],
+      subjects: [],
       isLoggedIn: localStorage.getItem('token') ? true : false,
+      selectedSubject: -1,
     };
     this.scheduleAppointment.bind(this);
   }
@@ -92,7 +90,6 @@ class TutorProfile extends Component {
         this.setState({
           user: res.data,
         })
-        console.log(res);
       })
   }
 
@@ -101,20 +98,21 @@ class TutorProfile extends Component {
       .get("/users/" + userID)
       .then(res => {
         this.setState({ tutor: res.data })
-        this.getCourses(this.state.tutor.subjects) // Once user has been loaded (requirement), retrieve data about courses
+        this.getCourses(this.state.tutor.subjects)
       })
 
       .catch(err => console.log(err));
   }
 
-  getCourses(subjectIDs) {
+  getCourses(subjects) {
 
-    for(let subjectID of subjectIDs) {
+    for(let subject of subjects) {
       axios
-        .get("/subjects/" + subjectID)
+        .get("/subjects/" + subject.id)
         .then(res => {
           this.setState(state => {
-            const subjects = state.courses.concat(res.data);
+            console.log(res.data)
+            const subjects = state.subjects.concat(res.data);
 
             return {
               subjects,
@@ -132,7 +130,7 @@ class TutorProfile extends Component {
       id: Math.floor(Math.random() * 100000),
       tutor: this.state.tutor.id,
       student: this.state.user.id,
-      subject: 5,
+      subject: this.state.selectedSubject,
       additional_comments: document.getElementById('description').value,
       date: document.getElementById('availabilities').value,
       location: "blank",
@@ -149,6 +147,11 @@ class TutorProfile extends Component {
       .catch(function (error) {
         console.log(error);
       });
+  }
+
+  handleChange = (e) => {
+    console.log(e.target.value)
+    this.setState({ selectedSubject: e.target.value });
   }
 
   render() {
@@ -195,18 +198,18 @@ class TutorProfile extends Component {
         <div className="tutor-appointment">
           <p className="tutor-appointment-main">Schedule an appointment</p>
           <p className="schedule-input">Select a course</p>
-          <StyledDropdown>
-            {this.state.subjects.map((subject,k) => (
-              <option key={k} value={subject.id}>{subject.name}</option>
-            ))}
-          </StyledDropdown>
-
+          {this.state.subjects.length > 0 &&
+            <StyledDropdown onChange={this.handleChange}>
+              {this.state.subjects.map((subject,k) => (
+                <option className="course-select" key={k} value={subject.id}>{subject.course_name}</option>
+              ))}
+            </StyledDropdown>
+          }
           <p></p>
           <p className="schedule-input">Enter your availabilities</p>
           <input className="text-input-box" id="availabilities" type="text" placeholder="Friday 10am-2pm...">
           </input>
           <p></p>
-
           <p className="schedule-input">Briefly describe the kind of help you need</p>
           <textarea className="textarea-input-box" id="description" type="text" placeholder="Midterm test prep on integrals..."></textarea>
           <p></p>

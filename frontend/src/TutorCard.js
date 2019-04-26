@@ -24,6 +24,21 @@ const Button = styled.button`
 class TutorCard extends Component {
 
   render() {
+
+    const subjects = this.props.user.subjects
+    var studentSubjects = ""
+
+    for(let i = 0; i < subjects.length; i++) {
+      if (i === 0) {
+        studentSubjects = subjects[i].course_name
+      } else if (i === subjects.length - 1) {
+        studentSubjects = studentSubjects + ", and " + subjects[i].course_name
+      } else {
+        studentSubjects = studentSubjects + ", " + subjects[i].course_name
+      }
+
+    }
+
     return (
         <div className="tutor-card">
           <img  src={ this.props.user.image }
@@ -32,7 +47,7 @@ class TutorCard extends Component {
           <h3 className="tutor-name">{this.props.user.name}</h3>
           <p className="paragraph">{this.props.user.bio}</p>
           <h4 className="tutor-availabilities">SUBJECTS</h4>
-          <p className="paragraph">{this.props.user.subjects}</p>
+          <p className="paragraph">{ studentSubjects }</p>
           <h4 className="tutor-availabilities">AVAILABILITIES</h4>
           <p className="paragraph">{this.props.user.availabilities}</p>
             <Link to={{ pathname: "/tutors/" + this.props.user.id }}>

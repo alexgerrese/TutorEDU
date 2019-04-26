@@ -222,6 +222,7 @@ h4 {
   margin-left: 12px;
   margin-right: 30px;
   margin-top: -24px;
+  object-fit: cover;
 }
 
 .appointment-card-text {
@@ -533,4 +534,5 @@ h4 {
   vertical-align: middle;
   margin-left: 12px;
   margin-right: 12px;
+  object-fit: cover;
 }
