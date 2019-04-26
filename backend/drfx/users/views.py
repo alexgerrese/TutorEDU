@@ -52,6 +52,7 @@ class UserDetail(APIView): #for a single user
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
 class SubjectListView(APIView):
 # same as above but for subjects
     def get(self, request, format=None):
@@ -112,14 +113,6 @@ class AppointmentDetail(APIView):
         appointment = self.get_object(pk)
         serializer = serializers.AppointmentSerializer(appointment)
         return Response(serializer.data)
-
-    def put(self, request, pk, format=None):
-        appointment = self.get_object(pk)
-        serializer = serializers.AppointmentSerializer(appointment)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def put(self, request, pk, format=None):
         appointment = self.get_object(pk)
