@@ -53,9 +53,9 @@
 
 ## Contributions
 **Alexander** - Team Leader. Designed the UI/UX of the website and implemented the majority of the frontend as well as some of the backend.
-**Noah** - 
+**Noah** - Created the first iteration of the backend and implemented the current version of admin, models, and validator files in the backend.
 **Jack** - 
-**Jaidha** - 
+**Jaidha** - Implemented Django rest-framework and rest-authentication into the backend by creating serializers, get, put, delete requests, and url endpoints.
 
 ## Attributions
 ### External libraries/packages
