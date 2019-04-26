@@ -9,16 +9,16 @@ class AppointmentSerializer(serializers.ModelSerializer):
         fields = ('id', 'tutor', 'student', 'subject', 'additional_comments', 'date', 'location', 'status', 'rating')
 
 class SubjectSerializer(serializers.ModelSerializer):
-    subject_appointments = AppointmentSerializer(many=True)
-    user_subjects = serializers.StringRelatedField(many=True)
+    subject_appointments = AppointmentSerializer(many=True,required=False)
+    user_subjects = serializers.StringRelatedField(many=True,required=False)
     class Meta:
         model = models.Subject
         fields = ('id', 'course_name', 'description','subject_appointments','user_subjects')
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
-    tutor_appointments = AppointmentSerializer(many=True)
-    student_appointments = AppointmentSerializer(many=True)
-    subjects = SubjectSerializer(many=True)
+    tutor_appointments = AppointmentSerializer(many=True,required=False)
+    student_appointments = AppointmentSerializer(many=True,required=False)
+    subjects = SubjectSerializer(many=True,required=False)
 
     class Meta:
         model = models.CustomUser

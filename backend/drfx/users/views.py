@@ -17,41 +17,14 @@ def current_user(request):
     return Response(serializer.data)
 
 # receivin
-class UserListView(APIView): #for users page
+class UserListView(generics.ListCreateAPIView): #for users page
 # displaying models from backend
-    def get(self, request, format=None):
-        users = models.CustomUser.objects.all()
-        serializer = serializers.UserSerializer(users,many=True)
-        return Response(serializer.data)
-# getting data from front end
-    def post(self, request, format=None):
-        serializer = serializers.UserSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    queryset = models.CustomUser.objects.all()
+    serializer_class = serializers.UserSerializer
 
-class UserDetail(APIView): #for a single user
-# pk is a regex for a single user.  pass in a specific id -- way to get an object of a certain id and check that it exists.
-    def get_object(self, pk):
-        try:
-            return models.CustomUser.objects.get(pk=pk)
-        except models.CustomUser.DoesNotExist:
-            raise Http404
-# same as above but for a single user.
-    def get(self, request, pk, format=None):
-        user = self.get_object(pk)
-        serializer = serializers.UserSerializer(user)
-        return Response(serializer.data)
-# same as above for a single user
-    def put(self, request, pk, format=None):
-        user = self.get_object(pk)
-        serializer = serializers.UserSerializer(user)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
+class UserDetail(generics.RetrieveUpdateDestroyAPIView): #for a single user
+    queryset = models.CustomUser.objects.all()
+    serializer_class = serializers.UserSerializer
 
 class SubjectListView(APIView):
 # same as above but for subjects
