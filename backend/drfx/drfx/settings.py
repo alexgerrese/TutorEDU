@@ -39,19 +39,18 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'corsheaders',
+    'rest_framework_jwt',
     'rest_framework.authtoken',
-    'rest_auth',
     'users',
     'django.contrib.sites',
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'rest_auth.registration',
+
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -79,6 +78,17 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'drfx.wsgi.application'
 
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+        # 'rest_framework.permissions.AllowAny',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+    ),
+}
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
@@ -109,6 +119,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+CORS_ORIGIN_WHITELIST = (
+    'localhost:3000',
+)
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
@@ -123,7 +136,9 @@ USE_L10N = True
 
 USE_TZ = True
 
-
+JWT_AUTH = {
+    'JWT_RESPONSE_PAYLOAD_HANDLER': 'drfx.utils.my_jwt_response_handler'
+}
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
@@ -131,10 +146,7 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'users/media')
 AUTH_USER_MODEL = 'users.CustomUser'
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.users.mail.backends.console.EmailBackend'
 SITE_ID = 1
-JWT_AUTH = {
-    'JWT_RESPONSE_PAYLOAD_HANDLER': 'drfx.utils.my_jwt_response_handler'
-}
 # django_heroku.settings(locals())
 # TEST_RUNNER = 'django_heroku.HerokuDiscoverRunner'

@@ -67,11 +67,11 @@ class SignIn extends Component {
       password: document.getElementById('password').value
     }
 
-    axios.post('/rest-auth/login/', credentials)
+    axios.post('/token-auth/', credentials)
       .then((response) => {
         console.log(response);
-        if (response.data.key !== undefined) {
-          localStorage.setItem('token', response.data.key);
+        if (response.data.token !== undefined) {
+          localStorage.setItem('token', response.data.token);
           this.setState({
               isLoggedIn: true,
             });

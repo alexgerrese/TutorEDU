@@ -76,9 +76,9 @@ class SignUp extends Component {
       availabilities: document.getElementById('availabilities').value
     }
 
-    console.log("NEW USER: " + newUser);
+    console.log(newUser);
 
-    axios.post('/rest-auth/registration/', newUser)
+    axios.post('/users/', newUser)
       .then((response) => {
         console.log(response);
       })
