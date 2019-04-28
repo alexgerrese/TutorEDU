@@ -7,6 +7,7 @@ import TutorProfile from './TutorProfile';
 import Appointments from './Appointments';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
+import SignUpTutor from './SignUpTutor';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -27,6 +28,7 @@ const routing = (
         <Route path="/appointments" component={Appointments} />
         <Route path="/signin" component={SignIn} />
         <Route path="/signup" component={SignUp} />
+        <Route path="/signup-tutor" component={SignUpTutor} />
       </div>
     </Router>
   </div>

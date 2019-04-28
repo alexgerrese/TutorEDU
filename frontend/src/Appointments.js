@@ -8,7 +8,8 @@ class Appointments extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      appointments: [],
+      pendingAppointments: [],
+      scheduledAppointments: [],
       user: null,
     };
   }
@@ -29,34 +30,65 @@ class Appointments extends Component {
         this.setState({
           user: res.data,
         })
-        this.getAppointments(this.state.user.id)
+        this.getAppointments()
       })
   }
 
-  getAppointments(userID) {
-    axios
-      .get("/appointments/", userID)
-      .then(res => this.setState({ appointments: res.data }))
-      .catch(err => console.log(err));
+  getAppointments() {
+    // axios
+    //   .get("/appointments")
+    //   .then(res => {
+    //     console.log(res);
+    //     this.setState({
+    //       appointments: res.data,
+    //     })
+    //   })
+    //   .catch(err => console.log(err));
+    var pendingAppointments = []
+    var scheduledAppointments = []
+    const unfilteredAppointments = this.state.user.tutor_appointments.concat(this.state.user.student_appointments)
+
+    for (let appointment of unfilteredAppointments) {
+      if (appointment.status === "Waiting for tutor response" || appointment.status === "Waiting for response") {
+        pendingAppointments.push(appointment)
+      } else {
+        scheduledAppointments.push(appointment)
+      }
+    }
+
+    this.setState({
+      pendingAppointments: pendingAppointments,
+      scheduledAppointments: scheduledAppointments,
+    })
+
   }
 
   render() {
     return (
       <div className="appointments-container">
         <div className="upcoming-appointments">
-          <h2 className="upcoming-appointments-text">Upcoming Appointments</h2>
-          {this.state.appointments.length > 0 ? (
-            this.state.appointments.map((appointment,k) => (
+          <h2 className="upcoming-appointments-text">Pending Appointments</h2>
+          {this.state.pendingAppointments.length > 0 ? (
+            this.state.pendingAppointments.map((appointment,k) => (
               <AppointmentCard  key={k}
-                                appointment={appointment}/>
+                                appointment={appointment}
+                                currentUserID={this.state.user.id}/>
             ))
           ) : (
-            <p className="tutor-results">No upcoming appointments</p>
+            <p className="tutor-results">No pending appointments</p>
           )}
         </div>
         <div className="past-appointments">
-          <h2 className="past-appointments-text">Past Appointments</h2>
-          <p className="tutor-results">No past appointments</p>
+          <h2 className="past-appointments-text">Scheduled Appointments</h2>
+            {this.state.scheduledAppointments.length > 0 ? (
+              this.state.scheduledAppointments.map((appointment,k) => (
+                <AppointmentCard  key={k}
+                                  appointment={appointment}
+                                  currentUserID={this.state.user.id}/>
+              ))
+            ) : (
+              <p className="tutor-results">No scheduled appointments</p>
+            )}
         </div>
       </div>
     )

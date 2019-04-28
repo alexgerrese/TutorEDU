@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './styles.css';
 import styled from 'styled-components';
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import background from './images/duke.png'
 
 const PrimaryButton = styled.button`
@@ -54,37 +54,10 @@ class SignUp extends Component {
     super(props);
     this.state = {
       isTutor: false,
+      isLoggedIn: false,
     };
 
     this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
-  }
-
-  componentDidMount() {
-
-  }
-
-  handleSignup() {
-
-    const newUser = {
-      name: document.getElementById('name').value,
-      email: document.getElementById('email').value,
-      username: document.getElementById('username').value,
-      password: document.getElementById('password').value,
-      is_tutor: this.state.isTutor,
-      bio: document.getElementById('bio').value,
-      hourly_rate: document.getElementById('hourlyRate').value,
-      availabilities: document.getElementById('availabilities').value
-    }
-
-    console.log(newUser);
-
-    axios.post('/users/', newUser)
-      .then((response) => {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
   }
 
   handleCheckboxChange(event) {
@@ -94,6 +67,34 @@ class SignUp extends Component {
     this.setState({
       isTutor: value
     })
+  }
+
+  handleSignup() {
+
+    const newUser = {
+      name: document.getElementById('name').value,
+      email: document.getElementById('email').value,
+      username: document.getElementById('username').value,
+      password: document.getElementById('password').value,
+      is_tutor: false,
+    }
+
+    console.log(newUser);
+
+    axios.post('/users/', newUser)
+      .then((response) => {
+        console.log(response);
+        localStorage.removeItem('token');
+        localStorage.setItem('token', response.data.token);
+
+        let { history } = this.props;
+        history.push({
+         pathname: '/',
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   render() {
@@ -123,22 +124,24 @@ class SignUp extends Component {
               I want to be a tutor
             </label>
           </div>
-          {this.state.isTutor &&
-            <div>
-              <p className="signin-input">Bio</p>
-              <textarea className="bio-input-box" id="bio" type="text" placeholder="Tell us about yourself…"></textarea>
-              <p className="signin-input">Hourly rate</p>
-              <input className="hourlyRate-input-box" id="hourlyRate" type="text" placeholder="$"></input>
-              <p className="signin-input">Availabilities</p>
-              <input className="signin-input-box" id="availabilities" type="text" placeholder="Friday 10am-2pm…"></input>
-            </div>
-          }
           <div>
             <Link to={{ pathname: "/signin/" }}>
               <SecondaryButton>Sign In</SecondaryButton>
             </Link>
-            <PrimaryButton onClick={() => {this.handleSignup()}}>Create Account</PrimaryButton>
-
+            {this.state.isTutor ? (
+              <Link to={{
+                pathname: '/signup-tutor',
+                state: {
+                  name: document.getElementById('name') === null ? "" : document.getElementById('name').value,
+                  email: document.getElementById('email') === null ? "" : document.getElementById('email').value,
+                  username: document.getElementById('username') === null ? "" : document.getElementById('username').value,
+                  password: document.getElementById('password') === null ? "" : document.getElementById('password').value,
+                }
+              }}><PrimaryButton>Continue</PrimaryButton>
+              </Link>
+            ) : (
+              <PrimaryButton onClick={() => {this.handleSignup()}}>Create Account</PrimaryButton>
+            )}
           </div>
         </div>
       </div>
@@ -146,4 +149,4 @@ class SignUp extends Component {
   }
 }
 
-export default SignUp;
+export default withRouter(SignUp);

@@ -132,9 +132,9 @@ class TutorProfile extends Component {
       student: this.state.user.id,
       subject: this.state.selectedSubject,
       additional_comments: document.getElementById('description').value,
-      date: document.getElementById('availabilities').value,
+      availabilities: document.getElementById('availabilities').value,
       location: "blank",
-      status: "Waiting for response",
+      status: "Waiting for tutor response",
       rating: 5
     }
 
