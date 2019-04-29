@@ -100,7 +100,6 @@ class TutorProfile extends Component {
         this.setState({ tutor: res.data })
         this.getCourses(this.state.tutor.subjects)
       })
-
       .catch(err => console.log(err));
   }
 

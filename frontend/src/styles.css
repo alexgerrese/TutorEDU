@@ -222,6 +222,8 @@ h4 {
   margin-left: 24px;
   margin-right: 36px;
   object-fit: cover;
+  float: left;
+  display: inline-block;
 }
 
 .appointment-card-text {
@@ -250,13 +252,15 @@ h4 {
 
 .appointment-card-right {
   float: right;
-  display: grid;
+  display: inline-block;
   vertical-align: top;
 }
 
 .appointment-card-info {
   text-align: left;
-  margin-top: 32px;
+  margin-top: 24px;
+  display: inline-block;
+  margin-left: 28px;
 }
 
 .appointment-card-info-left {

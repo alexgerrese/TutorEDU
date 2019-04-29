@@ -40,11 +40,11 @@ class NavBar extends Component {
             <Navbar.Brand href="/">TutorEDU</Navbar.Brand>
             <Navbar.Toggle />
             <Navbar.Collapse className="justify-content-end">
-              <Navbar.Text className="navbar-appointments">
-                <a href="/appointments">Appointments</a>
-              </Navbar.Text>
               {isLoggedIn ? (
                 <div>
+                  <Navbar.Text className="navbar-appointments">
+                    <a href="/appointments">Appointments</a>
+                  </Navbar.Text>
                   <a href="/signin"><img className="navbar-profpic" src={ this.state.user != null ? this.state.user.image : null } alt=""/>
                   </a>
                 </div>

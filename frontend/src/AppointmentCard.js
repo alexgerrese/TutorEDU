@@ -117,11 +117,14 @@ class AppointmentCard extends Component {
     // Conditionally render appointment status
     const appointmentStatus = this.state.appointment.status
     var statusComponent;
+    var isScheduled = false;
 
     if (appointmentStatus === "Canceled") {
       statusComponent = <p className="appointment-status" style={{"color": "#C93131"}}>{ this.state.appointment.status.toUpperCase() }</p>
+      isScheduled = true;
     } else if (appointmentStatus === "Confirmed"){
       statusComponent = <p className="appointment-status" style={{"color": "green"}}>{ this.state.appointment.status.toUpperCase() }</p>
+      isScheduled = true;
     } else {
       statusComponent = <p className="appointment-status" style={{"color": "#898989"}}>{ this.state.appointment.status.toUpperCase() }</p>
     }
@@ -143,11 +146,21 @@ class AppointmentCard extends Component {
       <div className="appointment-card-container">
         <div className="appointment-card-card">
           <div className="appointment-card-left">
-            <img className="appointment-card-profpic" src={ this.state.tutor != null ? this.state.tutor.image : null } alt="Tutor Profile Pic"/>
             <div className="appointment-card-text">
-              { statusComponent }
-              <h3 className="appointment-card-name">{ this.state.tutor != null ? this.state.tutor.name : "Loading..." }</h3>
-              <p className="appointment-card-details">{ detailString }</p>
+              <div className="appointment-card-left">
+                <img className="appointment-card-profpic" src={ this.state.tutor != null ? this.state.tutor.image : null } alt="Tutor Profile Pic"/>
+              </div>
+              <div className="appointment-card-left">
+                { statusComponent }
+                <h3 className="appointment-card-name">{ this.state.tutor != null ? this.state.tutor.name : "Loading..." }</h3>
+                <p className="appointment-card-details">{ detailString }</p>
+              </div>
+              { !isScheduled && 
+                <div className="appointment-card-right">
+                  <CancelButton>{ secondaryButtonText }</CancelButton>
+                  <SaveButton onClick={() => {this.handleSave()}}>{ primaryButtonText }</SaveButton>
+                </div>
+              }
               <div className="appointment-card-info">
                 <div className="appointment-card-info-left">
                   <p className="schedule-input">Additional Information</p>
@@ -160,10 +173,7 @@ class AppointmentCard extends Component {
               </div>
             </div>
           </div>
-          <div className="appointment-card-right">
-            <CancelButton>{ secondaryButtonText }</CancelButton>
-            <SaveButton onClick={() => {this.handleSave()}}>{ primaryButtonText }</SaveButton>
-          </div>
+
         </div>
       </div>
     )
