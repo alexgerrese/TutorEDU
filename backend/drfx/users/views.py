@@ -88,9 +88,9 @@ class AppointmentDetail(generics.RetrieveUpdateDestroyAPIView):
             tutorEmail = models.CustomUser.objects.get(pk=tutor).email
             studentEmail = models.CustomUser.objects.get(pk=student).email
             studentName = models.CustomUser.objects.get(pk=student).name
-            if aptStatus == 'Declined':
+            if aptStatus.lower() == 'declined':
                 message = 'Hi %s, Your request for tutoring has been declined' % (studentName)
-            elif aptStatus == 'Confirmed':
+            elif aptStatus.lower() == 'confirmed':
                 message = 'Hi %s, Your request for tutoring has been accepted.  This is your tutor’s contact information for you to reach out to: \n Name: %s \n Email: %s' % (studentName, tutorName, tutorEmail)
             else:
                 return Response(serializer.data)
