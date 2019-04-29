@@ -1,0 +1,9 @@
+django
+djangorestframework
+django-rest-auth
+django-allauth
+gunicorn
+pillow
+postgres
+psycopg2
+django-heroku
