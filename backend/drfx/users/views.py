@@ -74,10 +74,12 @@ class AppointmentDetail(generics.RetrieveUpdateDestroyAPIView):
             tutorEmail = models.CustomUser.objects.get(pk=tutor).email
             studentEmail = models.CustomUser.objects.get(pk=student).email
             studentName = models.CustomUser.objects.get(pk=student).name
+            subject = serializer.data.get('subject')
+            subjectHelp = models.Subject.objects.get(pk=subject).course_name
             if aptStatus.lower() == 'declined':
-                message = 'Hi %s, \n\nUnfortunately, your request for tutoring has been declined.  Please reach out to a new tutor if you still seek assistance.\n\nBest regards,\nThe TutorEDU Team \n\n\n\nThis email was automatically generated.  Do not reply.' % (studentName)
+                message = 'Hi %s, \n\nUnfortunately, your request for tutoring has been declined.  Please reach out to a new tutor if you still seek assistance in %s.\n\nBest regards,\nThe TutorEDU Team \n\n\n\nThis email was automatically generated.  Do not reply.' % (studentName, subjectHelp)
             elif aptStatus.lower() == 'confirmed':
-                message = 'Hi %s, \n\nCongratulations!  Your request for tutoring has been confirmed.  The following is your tutor’s contact information: \n\n Name: %s \n Email: %s \n\nPlease reach out to the tutor if you still seek assistance.\n\nBest regards,\nThe TutorEDU Team \n\n\n\nThis email was automatically generated.  Do not reply.' % (studentName, tutorName, tutorEmail)
+                message = 'Hi %s, \n\nCongratulations!  Your request for tutoring has been confirmed.  The following is your tutor’s contact information: \n\n Name: %s \n Email: %s \n\nPlease reach out to the tutor if you still seek assistance in %s.\n\nBest regards,\nThe TutorEDU Team \n\n\n\nThis email was automatically generated.  Do not reply.' % (studentName, tutorName, tutorEmail, subjectHelp)
             else:
                 return Response(serializer.data)
             subject = 'Update to your Appointment Status'
