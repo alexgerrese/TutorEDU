@@ -92,6 +92,20 @@ class AppointmentCard extends Component {
 
   handleSave() {
 
+  //   const updatedFields = {
+  //     id: 30379,
+  //     tutor: 5,
+  //     student: 6,
+  //     subject: 2,
+  //     additional_comments: "asdfasdf1234555",
+  //     availabilities: "Mon-Fri 10am-1:30pm, Sat 4pm-6pm",
+  //     is_active: true,
+  //     date: "2019-04-29",
+  //     location: "blank",
+  //     status: "Waiting for tutor response",
+  //     rating: 5
+  // }
+
     const updatedFields = {
       additional_comments: document.getElementById('description').value,
       availabilities: document.getElementById('availabilities').value,
@@ -105,7 +119,7 @@ class AppointmentCard extends Component {
     // };
 
     axios
-      .put("/appointments/" + this.state.appointment.id, updatedFields)
+      .patch("/appointments/" + this.state.appointment.id, { availabilities: "blabla" })
       .then(res => {
         this.setState({ tutor: res.data })
       })
@@ -155,7 +169,7 @@ class AppointmentCard extends Component {
                 <h3 className="appointment-card-name">{ this.state.tutor != null ? this.state.tutor.name : "Loading..." }</h3>
                 <p className="appointment-card-details">{ detailString }</p>
               </div>
-              { !isScheduled && 
+              { !isScheduled &&
                 <div className="appointment-card-right">
                   <CancelButton>{ secondaryButtonText }</CancelButton>
                   <SaveButton onClick={() => {this.handleSave()}}>{ primaryButtonText }</SaveButton>

@@ -54,10 +54,30 @@ class SignIn extends Component {
     super(props);
     this.state = {
       isLoggedIn: localStorage.getItem('token') ? true : false,
-      username: ''
+      username: '',
+      user: null,
     };
 
     this.handleLogin = this.handleLogin.bind(this);
+  }
+
+  componentDidMount() {
+    this.getCurrentUser()
+  }
+
+  getCurrentUser() {
+    var config = {
+      headers: {'Authorization': `JWT ${localStorage.getItem('token')}`}
+    };
+
+    axios
+      .get('/current_user', config)
+      .then(res => {
+        console.log(res);
+        this.setState({
+          user: res.data,
+        })
+      })
   }
 
   handleLogin() {
@@ -110,7 +130,8 @@ class SignIn extends Component {
 
     const signOutView =
       <div className="signin-right">
-        <h2 className="signin-title">Are you sure you want to log out?</h2>
+        <h2 className="signin-title">Hi { this.state.user !== null ? this.state.user.name : "there"}!</h2>
+        <p>Are you sure you want to log out?</p>
         <div>
           <PrimaryButton onClick={() => {this.handleLogout()}}>Logout</PrimaryButton>
         </div>

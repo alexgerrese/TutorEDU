@@ -112,11 +112,9 @@ class TutorProfile extends Component {
           this.setState(state => {
             console.log(res.data)
             const subjects = state.subjects.concat(res.data);
-
             return {
               subjects,
             };
-
           });
         })
         .catch(err => console.log(err));
@@ -129,12 +127,13 @@ class TutorProfile extends Component {
       id: Math.floor(Math.random() * 100000),
       tutor: this.state.tutor.id,
       student: this.state.user.id,
-      subject: this.state.selectedSubject,
+      subject: parseInt(this.state.selectedSubject, 10) !== -1 ? parseInt(this.state.selectedSubject, 10) : this.state.subjects[0].id,
       additional_comments: document.getElementById('description').value,
       availabilities: document.getElementById('availabilities').value,
+      is_active: true,
       location: "blank",
       status: "Waiting for tutor response",
-      rating: 5
+      rating: 5,
     }
 
     console.log(appointment);
@@ -149,7 +148,6 @@ class TutorProfile extends Component {
   }
 
   handleChange = (e) => {
-    console.log(e.target.value)
     this.setState({ selectedSubject: e.target.value });
   }
 
