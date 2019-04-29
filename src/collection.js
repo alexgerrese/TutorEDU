@@ -12,7 +12,7 @@ class Collection extends Component {
 
   componentDidMount() {
     axios
-      .get("/users/")
+      .get("http://127.0.0.1:8000/users/")
       .then(res => this.setState({ users: res.data }))
       .catch(err => console.log(err));
   }

@@ -89,7 +89,7 @@ class TutorProfile extends Component {
     };
 
     axios
-      .get('/current_user', config)
+      .get('http://127.0.0.1:8000/current_user', config)
       .then(res => {
         this.setState({
           user: res.data,
@@ -99,7 +99,7 @@ class TutorProfile extends Component {
 
   getTutor(userID) {
     axios
-      .get("/users/" + userID)
+      .get("http://127.0.0.1:8000/users/" + userID + "/")
       .then(res => {
         this.setState({ tutor: res.data })
         this.getCourses(this.state.tutor.subjects)
@@ -111,7 +111,7 @@ class TutorProfile extends Component {
 
     for(let subject of subjects) {
       axios
-        .get("/subjects/" + subject.id)
+        .get(`http://127.0.0.1:8000/subjects/${subject.id}/`)
         .then(res => {
           this.setState(state => {
             console.log(res.data)
@@ -143,7 +143,7 @@ class TutorProfile extends Component {
 
     console.log(appointment);
 
-    axios.post('/appointments/', appointment)
+    axios.post('http://127.0.0.1:8000//appointments/', appointment)
       .then(function (response) {
         console.log(response);
       })
