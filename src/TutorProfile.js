@@ -73,10 +73,14 @@ class TutorProfile extends Component {
 
   componentDidMount() {
 
-    const { match: { params } } = this.props;
+    // const { match: { params } } = this.props;
+    console.log(this.props.match.params.userID)
+    this.getTutor(this.props.match.params.userID)
 
-    this.getTutor(params.userID)
-    this.getCurrentUser()
+    if (this.state.isLoggedIn) {
+      this.getCurrentUser()
+    }
+
   }
 
   getCurrentUser() {
