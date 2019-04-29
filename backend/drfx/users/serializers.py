@@ -7,7 +7,7 @@ from . import models
 class AppointmentSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Appointment
-        fields = ('id', 'tutor', 'student', 'subject', 'additional_comments', 'is_active','date', 'location', 'status', 'rating')
+        fields = ('id', 'tutor', 'student', 'subject', 'additional_comments', 'availabilities', 'is_active','date', 'location', 'status', 'rating')
 
 class SubjectSerializer(serializers.ModelSerializer):
     subject_appointments = AppointmentSerializer(many=True,required=False)

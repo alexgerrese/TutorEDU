@@ -37,6 +37,7 @@ class CustomUser(AbstractUser):
 class Appointment(models.Model):
     id = models.IntegerField(default='5', blank=True, primary_key=True)
     additional_comments = models.CharField(default='blank', blank=True, max_length=200)
+    availabilities = models.CharField(default='blank', blank=True, max_length=2000)
     date = models.DateField(("Date"), auto_now_add=True)
     location = models.CharField(default='blank', blank=True, max_length=40)
     status = models.CharField(default='blank', blank=True, max_length=20)
