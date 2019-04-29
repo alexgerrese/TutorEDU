@@ -145,7 +145,14 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'users/media')
 AUTH_USER_MODEL = 'users.CustomUser'
-EMAIL_BACKEND = 'django.users.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.users.mail.backends.console.EmailBackend'
 SITE_ID = 1
 # django_heroku.settings(locals())
 # TEST_RUNNER = 'django_heroku.HerokuDiscoverRunner'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'tutoreduhost@gmail.com'
+EMAIL_HOST_PASSWORD = 'hgjxajktvocgkklh'
+EMAIL_PORT = 587
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
