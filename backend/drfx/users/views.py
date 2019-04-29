@@ -78,27 +78,21 @@ class AppointmentDetail(generics.RetrieveUpdateDestroyAPIView):
 
     def put(self, request, pk, format=None):
         snippet = self.get_object(pk)
-        # print (snippet.status)
         serializer = serializers.AppointmentSerializer(snippet, data=request.data)
         if serializer.is_valid():
             serializer.save()
-            ree = serializer.data.get('status')
+            aptStatus = serializer.data.get('status')
             tutor = serializer.data.get('tutor')
             student = serializer.data.get('student')
-            # print (ree)
-            # print (type(ree))
             tutorName = models.CustomUser.objects.get(pk=tutor).name
             tutorEmail = models.CustomUser.objects.get(pk=tutor).email
             studentEmail = models.CustomUser.objects.get(pk=student).email
             studentName = models.CustomUser.objects.get(pk=student).name
-            # print (email2)
-            if ree == 'Declined':
-                # print ("cat")
+            if aptStatus == 'Declined':
                 message = 'Hi %s, Your request for tutoring has been declined' % (studentName)
-            elif ree == 'Confirmed':
+            elif aptStatus == 'Confirmed':
                 message = 'Hi %s, Your request for tutoring has been accepted.  This is your tutor’s contact information for you to reach out to: \n Name: %s \n Email: %s' % (studentName, tutorName, tutorEmail)
             else:
-                # print ("cat3")
                 return Response(serializer.data)
             subject = 'Update to your Appointment Status'
             from_email = settings.EMAIL_HOST_USER
