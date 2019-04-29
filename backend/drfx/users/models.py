@@ -40,7 +40,7 @@ class Appointment(models.Model):
     availabilities = models.CharField(default='blank', blank=True, max_length=2000)
     date = models.DateField(("Date"), auto_now_add=True)
     location = models.CharField(default='blank', blank=True, max_length=40)
-    status = models.CharField(default='blank', blank=True, max_length=20)
+    status = models.CharField(default='blank', blank=True, max_length=50)
     is_active = models.BooleanField(default=True)
     rating = models.IntegerField(default='5', blank=True)
     tutor = models.ForeignKey(CustomUser,related_name='tutor_appointments', on_delete=models.CASCADE, null=True,blank=True)
