@@ -45,9 +45,6 @@ class AppointmentListView(generics.ListCreateAPIView):
     serializer_class = serializers.AppointmentSerializer
 
 class AppointmentDetail(generics.RetrieveUpdateDestroyAPIView):
-    """
-    Retrieve, update or delete an instance.
-    """
     queryset = models.Appointment.objects.all()
     serializer_class = serializers.AppointmentSerializer
 
