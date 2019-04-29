@@ -1,20 +1,17 @@
 # users/views.py
-from django.contrib import messages
+# from django.contrib import messages
 from django.conf import settings
 from django.core.mail import send_mail
-from django.core.mail import EmailMessage
-from django.http import QueryDict
-from rest_framework import generics, permissions, status
+# from django.core.mail import EmailMessage
+# from django.http import QueryDict
+# from rest_framework import generics, permissions, status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from rest_framework import mixins
 from rest_framework import generics
 from django.http import Http404
-from rest_framework.views import APIView
-from django.http import HttpResponseRedirect
-from django.http import HttpRequest
-from django.views.generic.detail import SingleObjectMixin
-from rest_framework import mixins
+# from rest_framework.views import APIView
+# from django.http import HttpResponseRedirect
+# from django.http import HttpRequest
 from rest_framework import serializers
 from . import models
 from . import serializers
@@ -28,9 +25,7 @@ def current_user(request):
     serializer = serializers.UserSerializer(request.user)
     return Response(serializer.data)
 
-# receivin
-class UserListView(generics.ListCreateAPIView): #for users page
-# displaying models from backend
+class UserListView(generics.ListCreateAPIView):
     queryset = models.CustomUser.objects.all()
     serializer_class = serializers.UserSerializer
 
@@ -41,7 +36,7 @@ class UserListView(generics.ListCreateAPIView): #for users page
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-class UserDetail(generics.RetrieveUpdateDestroyAPIView): #for a single user
+class UserDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = models.CustomUser.objects.all()
     serializer_class = serializers.UserSerializer
 
@@ -60,7 +55,7 @@ class AppointmentListView(generics.ListCreateAPIView):
 
 class AppointmentDetail(generics.RetrieveUpdateDestroyAPIView):
     """
-    Retrieve, update or delete a snippet instance.
+    Retrieve, update or delete an instance.
     """
     queryset = models.Appointment.objects.all()
     serializer_class = serializers.AppointmentSerializer
