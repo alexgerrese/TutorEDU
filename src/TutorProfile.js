@@ -143,7 +143,7 @@ class TutorProfile extends Component {
 
     console.log(appointment);
 
-    axios.post('http://127.0.0.1:8000//appointments/', appointment)
+    axios.post('http://127.0.0.1:8000/appointments/', appointment)
       .then(function (response) {
         console.log(response);
       })
