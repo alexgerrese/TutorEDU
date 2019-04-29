@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import os
 from .email_info import EMAIL_USE_TLS, EMAIL_HOST, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, EMAIL_PORT, EMAIL_BACKEND, DEFAULT_FROM_EMAIL
+import datetime
 # import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -137,7 +138,9 @@ USE_L10N = True
 USE_TZ = True
 
 JWT_AUTH = {
-    'JWT_RESPONSE_PAYLOAD_HANDLER': 'drfx.utils.my_jwt_response_handler'
+    'JWT_RESPONSE_PAYLOAD_HANDLER': 'drfx.utils.my_jwt_response_handler',
+    'JWT_ALLOW_REFRESH': True,
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(days=2),
 }
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
@@ -149,6 +152,7 @@ AUTH_USER_MODEL = 'users.CustomUser'
 SITE_ID = 1
 # django_heroku.settings(locals())
 # TEST_RUNNER = 'django_heroku.HerokuDiscoverRunner'
+# APPEND_SLASH = False
 EMAIL_USE_TLS = EMAIL_USE_TLS
 EMAIL_HOST = EMAIL_HOST
 EMAIL_HOST_USER = EMAIL_HOST_USER

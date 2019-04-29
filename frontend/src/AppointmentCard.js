@@ -92,20 +92,6 @@ class AppointmentCard extends Component {
 
   handleSave() {
 
-  //   const updatedFields = {
-  //     id: 30379,
-  //     tutor: 5,
-  //     student: 6,
-  //     subject: 2,
-  //     additional_comments: "asdfasdf1234555",
-  //     availabilities: "Mon-Fri 10am-1:30pm, Sat 4pm-6pm",
-  //     is_active: true,
-  //     date: "2019-04-29",
-  //     location: "blank",
-  //     status: "Waiting for tutor response",
-  //     rating: 5
-  // }
-
     const updatedFields = {
       additional_comments: document.getElementById('description').value,
       availabilities: document.getElementById('availabilities').value,
@@ -113,15 +99,29 @@ class AppointmentCard extends Component {
 
     console.log(updatedFields)
 
-    // var config = {
-    //   headers: {'Authorization': `JWT ${localStorage.getItem('token')}`},
-    //   data: updatedFields,
-    // };
+    axios
+      .patch("/appointments/" + this.state.appointment.id + "/", updatedFields)
+      .then(res => {
+        console.log(res)
+        this.setState({ appointment: res.data })
+      })
+      .catch(err => console.log(err));
+  }
+
+  handleCancel() {
+
+    const updatedFields = {
+      is_active: false,
+      status: "Canceled"
+    }
+
+    console.log(updatedFields)
 
     axios
-      .patch("/appointments/" + this.state.appointment.id, { availabilities: "blabla" })
+      .patch("/appointments/" + this.state.appointment.id + "/", updatedFields)
       .then(res => {
-        this.setState({ tutor: res.data })
+        console.log(res)
+        this.setState({ appointment: res.data })
       })
       .catch(err => console.log(err));
   }
@@ -171,7 +171,7 @@ class AppointmentCard extends Component {
               </div>
               { !isScheduled &&
                 <div className="appointment-card-right">
-                  <CancelButton>{ secondaryButtonText }</CancelButton>
+                  <CancelButton onClick={() => {this.handleCancel()}}>{ secondaryButtonText }</CancelButton>
                   <SaveButton onClick={() => {this.handleSave()}}>{ primaryButtonText }</SaveButton>
                 </div>
               }

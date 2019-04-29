@@ -7,12 +7,14 @@ from .views import current_user
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
-from rest_framework_jwt.views import obtain_jwt_token
+from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token, verify_jwt_token
 
 
 # url links sends you to page. -- pk is just regex (specific instance of an object)
 urlpatterns =  [
     path('token-auth/', obtain_jwt_token),
+    path('token-auth-refresh/', refresh_jwt_token),
+    path('token-auth-verify/', verify_jwt_token),
     path('admin/', admin.site.urls),
     path('current_user/', current_user),
     path('users/', views.UserListView.as_view(),name = 'user-list'),

@@ -65,9 +65,9 @@ class AppointmentDetail(generics.RetrieveUpdateDestroyAPIView):
         serializer = serializers.AppointmentSerializer(snippet)
         return Response(serializer.data)
 
-    def put(self, request, pk, format=None):
+    def patch(self, request, pk, format=None):
         snippet = self.get_object(pk)
-        serializer = serializers.AppointmentSerializer(snippet, data=request.data)
+        serializer = serializers.AppointmentSerializer(snippet, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
             aptStatus = serializer.data.get('status')
