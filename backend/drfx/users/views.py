@@ -1,10 +1,16 @@
 # users/views.py
 from django.conf import settings
 from django.core.mail import send_mail
-from rest_framework import generics, status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from django.http import Http404
+# from django.contrib import messages
+from django.http import QueryDict
+from rest_framework import generics, permissions, status
+from rest_framework.views import APIView
+from django.http import HttpResponseRedirect
+from django.http import HttpRequest
+from rest_framework import serializers
 from . import models
 from . import serializers
 
