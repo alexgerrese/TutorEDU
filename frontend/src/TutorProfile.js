@@ -73,10 +73,15 @@ class TutorProfile extends Component {
 
   componentDidMount() {
 
-    const { match: { params } } = this.props;
+    // const { match: { params } } = this.props;
 
-    this.getTutor(params.userID)
-    this.getCurrentUser()
+    // console.log(this.props.params.userID)
+    console.log(this.props.match.params.userID)
+
+    this.getTutor(this.props.match.params.userID)
+    if (this.state.isLoggedIn) {
+      this.getCurrentUser()
+    }
   }
 
   getCurrentUser() {
@@ -157,7 +162,7 @@ class TutorProfile extends Component {
         <div className="tutor-TutorProfile">
           <div className="tutor-topHeader">
             <div className="tutor-picture">
-            <img  src={ this.state.tutor.image }
+            <img  src={ this.state.tutor.image !== null ? this.state.tutor.image : "https://randomuser.me/api/portraits/men/" + this.state.tutor.id + ".jpg" }
                   alt={ this.state.tutor.name }
                   className="tutor-profpicture"/>
             </div>

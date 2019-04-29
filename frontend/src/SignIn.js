@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './styles.css';
 import styled from 'styled-components';
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import background from './images/duke.png'
 
 const PrimaryButton = styled.button`
@@ -62,7 +62,9 @@ class SignIn extends Component {
   }
 
   componentDidMount() {
-    this.getCurrentUser()
+    if (this.state.isLoggedIn) {
+      this.getCurrentUser()
+    }
   }
 
   getCurrentUser() {
@@ -95,7 +97,28 @@ class SignIn extends Component {
           this.setState({
               isLoggedIn: true,
             });
-            window.location.reload();
+            this.refreshToken()
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
+  refreshToken() {
+    axios.post('/token-auth-refresh/', { token: localStorage.getItem('token') })
+      .then((response) => {
+        console.log(response);
+        if (response.data.token !== undefined) {
+          localStorage.setItem('token', response.data.token);
+          this.setState({
+              isLoggedIn: true,
+            });
+
+            let { history } = this.props;
+            history.push({
+             pathname: '/',
+            });
         }
       })
       .catch(function (error) {
@@ -148,4 +171,4 @@ class SignIn extends Component {
   }
 }
 
-export default SignIn;
+export default withRouter(SignIn);
