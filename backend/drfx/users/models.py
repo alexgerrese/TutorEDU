@@ -17,6 +17,7 @@ class CustomUser(AbstractUser):
     email = models.EmailField(default='blank', unique=True, validators= [validate_school_email])
     university = models.CharField(default='blank', blank=True, max_length=40)
     bio = models.CharField(default='blank', blank=True, max_length=2000)
+    report_card = models.CharField(default='blank', blank=True, max_length=2000)
     client_rating = models.IntegerField(default='5', blank=True)
     is_tutor = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)

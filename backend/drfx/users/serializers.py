@@ -25,7 +25,7 @@ class UserSerializer(serializers.ModelSerializer):
         model = models.CustomUser
         fields = ('id','email', 'username','name',
         'password', 'university','bio', 'client_rating',
-        'is_tutor','is_active', 'tutor_rating','hourly_rate','availabilities','image','tutor_appointments','student_appointments','subjects')
+        'is_tutor','is_active', 'tutor_rating','hourly_rate','availabilities','image','tutor_appointments','student_appointments','subjects','report_card')
         write_only_fields = ('password',)
         read_only_fields = ('id',)
 
