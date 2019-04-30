@@ -157,6 +157,20 @@ class TutorProfile extends Component {
   }
 
   render() {
+
+    const subjects = this.state.subjects
+    var tutorSubjects = ""
+
+    for(let i = 0; i < subjects.length; i++) {
+      if (i === 0) {
+        tutorSubjects = subjects[i].course_name
+      } else if (i === subjects.length - 1) {
+        tutorSubjects = tutorSubjects + ", and " + subjects[i].course_name
+      } else {
+        tutorSubjects = tutorSubjects + ", " + subjects[i].course_name
+      }
+
+    }
     return (
       <div className="tutor">
         <div className="tutor-TutorProfile">
@@ -182,8 +196,7 @@ class TutorProfile extends Component {
             </div>
             <div className="tutor-classes">
               <h4 className="tutor-classes">CLASSES</h4>
-              <p className="class-details">
-              PUBPOL 310, COMPSCI 230, SPANISH 220, COMPSCI 250</p>
+              <p className="class-details">{ tutorSubjects }</p>
             </div>
             <div className="tutor-availability">
               <h4 className="tutor-availability">AVAILABILITIES</h4>
@@ -192,8 +205,7 @@ class TutorProfile extends Component {
             </div>
             <div className="tutor-reportCard">
               <h4 className="tutor-reportCard">REPORT CARD</h4>
-              <p className="RCdetails">
-                Something about how I got good grades in these classes, am doing research and you should trust my tutoring capabilities. Something about how I got good grades in these classes.<br/><br/>I am doing research and you should trust my tutoring capabilities. Something about how I got good grades in these classes, am doing research and you should trust my tutoring capabilities.<br/><br/>I am doing research and you should trust my tutoring capabilities. Something about how I got good grades in these classes, am doing research and you should trust my tutoring capabilities.</p>
+              <p className="RCdetails">{ this.state.tutor.report_card }</p>
             </div>
             </div>
         </div>

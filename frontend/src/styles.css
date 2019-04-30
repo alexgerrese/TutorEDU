@@ -349,12 +349,9 @@ h4 {
 
 .tutor-TutorProfile {
   display: inline-block;
-  /* float: left; */
-  /* margin-left: 228px; */
+  vertical-align: top;
 }
 .tutor-appointment {
-  /* float: left; */
-  /* margin-right: 120px; */
   margin-left: 40px;
   display: inline-block;
 }

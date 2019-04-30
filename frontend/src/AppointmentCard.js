@@ -90,29 +90,28 @@ class AppointmentCard extends Component {
       .catch(err => console.log(err));
   }
 
-  handleSave() {
+  handleAction(actionType) {
 
-    const updatedFields = {
-      additional_comments: document.getElementById('description').value,
-      availabilities: document.getElementById('availabilities').value,
-    }
+    var updatedFields;
 
-    console.log(updatedFields)
-
-    axios
-      .patch("/appointments/" + this.state.appointment.id + "/", updatedFields)
-      .then(res => {
-        console.log(res)
-        this.setState({ appointment: res.data })
-      })
-      .catch(err => console.log(err));
-  }
-
-  handleCancel() {
-
-    const updatedFields = {
-      is_active: false,
-      status: "Canceled"
+    if (actionType === "save") {
+      updatedFields = {
+        additional_comments: document.getElementById('description').value,
+        availabilities: document.getElementById('availabilities').value,
+      }
+    } else if (actionType === "cancel") {
+      updatedFields = {
+        is_active: false,
+        status: "Canceled"
+      }
+    } else if (actionType === "confirm") {
+      updatedFields = {
+        status: "Confirmed"
+      }
+    } else if (actionType === "decline") {
+      updatedFields = {
+        status: "Declined"
+      }
     }
 
     console.log(updatedFields)
@@ -133,7 +132,7 @@ class AppointmentCard extends Component {
     var statusComponent;
     var isScheduled = false;
 
-    if (appointmentStatus === "Canceled") {
+    if (appointmentStatus === "Canceled" || appointmentStatus === "Declined") {
       statusComponent = <p className="appointment-status" style={{"color": "#C93131"}}>{ this.state.appointment.status.toUpperCase() }</p>
       isScheduled = true;
     } else if (appointmentStatus === "Confirmed"){
@@ -148,11 +147,15 @@ class AppointmentCard extends Component {
     const currentUserID = this.props.currentUserID
     var primaryButtonText = "Save changes"
     var secondaryButtonText = "Cancel Request"
+    var primaryAction = "save"
+    var secondaryAction = "cancel"
     var detailString = "TUTOR • " + this.state.subjectName + " • $" + (this.state.tutor != null ? this.state.tutor.hourly_rate : "") + "/HOUR"
 
     if (tutorID === currentUserID) {
       primaryButtonText = "Approve Request"
       secondaryButtonText = "Reject Request"
+      primaryAction = "confirm"
+      secondaryAction = "decline"
       detailString = "CLIENT • " + this.state.subjectName
     }
 
@@ -171,8 +174,8 @@ class AppointmentCard extends Component {
               </div>
               { !isScheduled &&
                 <div className="appointment-card-right">
-                  <CancelButton onClick={() => {this.handleCancel()}}>{ secondaryButtonText }</CancelButton>
-                  <SaveButton onClick={() => {this.handleSave()}}>{ primaryButtonText }</SaveButton>
+                  <CancelButton onClick={() => {this.handleAction(secondaryAction)}}>{ secondaryButtonText }</CancelButton>
+                  <SaveButton onClick={() => {this.handleAction(primaryAction)}}>{ primaryButtonText }</SaveButton>
                 </div>
               }
               <div className="appointment-card-info">

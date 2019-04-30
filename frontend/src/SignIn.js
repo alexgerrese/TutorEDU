@@ -114,7 +114,8 @@ class SignIn extends Component {
           this.setState({
               isLoggedIn: true,
             });
-
+            
+            window.location.reload()
             let { history } = this.props;
             history.push({
              pathname: '/',
